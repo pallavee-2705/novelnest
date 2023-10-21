@@ -37,7 +37,7 @@ const Categories = () => {
   console.log(button);
 
   return (
-    <div className='p-10 '>
+    <div className='p-10 mx-12'>
       <div className='flex w-full justify-between'>
         <div>
           <div className='flex items-center gap-2'>

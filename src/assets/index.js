@@ -10,6 +10,7 @@ import featurebook from "./featurebook.png";
 import newrelease1 from "./newrelease1.png"; 
 import newrelease2 from "./newrelease2.png"; 
 import newrelease3 from "./newrelease3.png"; 
+import logo from "./logo-color.png";
 
 
 export {
@@ -24,5 +25,6 @@ export {
     featurebook,
     newrelease1,
     newrelease2,
-    newrelease3
+    newrelease3,
+    logo
 }

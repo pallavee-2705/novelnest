@@ -9,8 +9,11 @@ import discount from "./discount.png";
 import featurebook from "./featurebook.png"; 
 import newrelease1 from "./newrelease1.png"; 
 import newrelease2 from "./newrelease2.png"; 
-import newrelease3 from "./newrelease3.png"; 
+import newrelease3 from "./newrelease3.png";
+import newrelease4 from "./newrelease4.png"; 
 import logo from "./logo-color.png";
+import arrow from "./arrow.png";
+
 
 
 export {
@@ -26,5 +29,7 @@ export {
     newrelease1,
     newrelease2,
     newrelease3,
-    logo
+    newrelease4,
+    logo,
+    arrow
 }

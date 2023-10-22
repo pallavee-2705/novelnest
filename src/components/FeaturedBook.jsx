@@ -54,7 +54,7 @@ const FeaturedBook = () => {
   console.log(book);
 
   return (
-    <div className="my-10 w-auto h-auto px-5 bg-gradient-to-r from-red-50 to-slate-50 flex flex-row justify-between">
+    <div className="w-auto h-auto px-5 bg-gradient-to-r from-red-50 to-slate-50 flex flex-row justify-between">
       <div className='h-auto flex flex-col justify-center items-center p-3'>
         <button onClick={()=>handleArrowPress('left')} className='border-[1px] border-[#ED553B] bg-white p-2 rounded-full hover:bg-[#ED553B] text-[#ED553B] hover:text-white'>
           <BsArrowLeft/>
@@ -65,18 +65,22 @@ const FeaturedBook = () => {
       <div>
       <div className={`flex ${book%2===0 ? "flex-row" : "flex-row-reverse"}  w-full justify-between`}>
         <a href='/featuredbook[i]' className='flex flex-col w-1/2 max-md:w-full items-center justify-center px-10 pt-10 cursor-pointer'>
-          <div>
+          <div className=''>
           <h2 className="flex w-full justify-center items-center py-2 font-['Inter'] text-indigo-900 font-semibold text-4xl sm:text-3xl max-md:block hidden mb-5">Feature Book</h2>
           </div>
-            <img src={featBooks[book].image} alt="featurebook" className='object-cover w-full h-full'/>
+          <div className='max-sm:h-[200px] flex items-center'>
+          <img src={featBooks[book].image} alt="featurebook" className='object-contain p-1 w-full h-full'/>
+          </div>
         </a>
 
         <div className='w-1/2 flex flex-col justify-center max-md:hidden block'>
         <div className={`h-full my-20 flex flex-col justify-evenly ${book%2 === 0 ? "items-start" : "items-end"} p-20 font-['Inter'] text-indigo-900 max-sm:hidden block`}>
           <h2 className="text-5xl font-semibold">Featured Book</h2>
 
-          <div className="mt-5">
+          <div className="mt-5 flex flex-col">
+            <div className={`flex ${book%2 === 0 ? "justify-start" : "justify-end"} `}>
             <div className='w-[101px] h-0.5 bg-red-500' />
+            </div>
             <p className='uppercase tracking-widest mt-3 text-sm text-zinc-500'>by {featBooks[book].author}</p>
           </div>
 

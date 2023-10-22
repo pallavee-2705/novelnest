@@ -2,7 +2,41 @@ import React from 'react'
 import { newrelease1, newrelease2, newrelease3, newrelease4, arrow } from '../assets'
 
 const NewReleases = () => {
+  const bookEntries = [
+    {
+      id: 1,
+      title: 'Simple way of piece life',
+      author: 'Armor Ramsey',
+      price: 40.00,
+      imageUrl: newrelease1
+    },
+    {
+      id: 2,
+      title: 'Great travel at desert',
+      author: 'Sanchit Howdy',
+      price: 38.00,
+      imageUrl: newrelease2
+    },
+    {
+      id: 3,
+      title: 'The Lady Beauty Scarlett',
+      author: 'Arthur Doyle',
+      price: 45.00,
+      imageUrl: newrelease3
+    },
+    {
+      id: 4,
+      title: 'Once Upon A Time',
+      author: 'Klien Marry',
+      price: 35.00,
+      imageUrl: newrelease4
+    }
+    // Add more book entries as needed
+  ];
   return (
+
+
+
     <div className="w-full flex flex-col h-auto bg-rose-50 py-4">
 
       {/* Headers */}
@@ -19,147 +53,43 @@ const NewReleases = () => {
 
 
     {/* Books */}
-      <div className='flex gap-8 mx-12 justify-between my-3 '>
-        {/* New Release 1 */}
-        <div 
-        className='flex-col flex hover:transform hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer'
-        onClick={() => {
-          window.open('https://www.goodreads.com/', '_blank');
-        }}>
-          {/* the white rectangle */}
-          <div className="w-[300px] h-[395px] bg-white shadow border border-stone-200 ">
-            <img
-            src={newrelease1}
-            alt='newrelease1'
-            className='h-auto w-auto px-2 py-2'
-            />
+    <div name='books' className='px-20'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 my-3'>
+              {bookEntries.map(({id, title, author, price, imageUrl}) => (
+                <div
+                  key={id}
+                  className='flex-col flex hover:transform hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer'
+                  onClick={() => {
+                    window.open('https://www.goodreads.com/', '_blank');
+                  }}
+                >
+                {/* the white rectangle */}
+                <div className='w-full md:col-span-1 lg:col-span-2 h-auto bg-white shadow border border-stone-200'>
+                  <img
+                  src={imageUrl}
+                  alt=""
+                  className="rounded-md duration-200 hover:scale-105 w-full h-auto py-2 px-2 "
+                />
+                </div>
 
-          </div>
+                {/* The title */}
+                <div className='mt-3 text-center text-indigo-900 text-[22px] font-semibold'>
+                  {title}
+                </div>
 
-          {/* The title */}
-          <div className=" mt-3 text-center text-indigo-900 text-[22px] font-semibold font-['Inter'] capitalize">
-            Simple way of piece life
-          </div>
+                {/* Authors name */}
+                <div className='mt-2 text-center text-zinc-500 text-sm font-normal  tracking-tight'>
+                  {author}
+                </div>
 
-          {/* Authors name */}
-          <div className=" mt-2 text-center text-zinc-500 text-sm font-normal font-['Inter'] capitalize tracking-tight">
-            Armor Ramsey
-          </div>
-
-          {/* Price */}
-          <div className=" mt-2 text-center text-red-500 text-lg font-bold font-['Inter'] capitalize tracking-tight">
-            $ 40.00
-          </div>
-
+                {/* Price */}
+                <div className='mt-2 text-center text-red-500 text-lg font-bold tracking-tight'>
+                  ${price}
+                  </div>
+              </div>
+              ))}
         </div>
-
-
-
-        {/* New Release 2 */}
-
-        <div className='flex-col flex hover:transform hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer'
-        onClick={() => {
-          window.open('https://www.goodreads.com/', '_blank');
-        }}
-        >
-          {/* the white rectangle */}
-          <div className="w-[300px] h-[395px] bg-white shadow border border-stone-200 ">
-
-            <img
-            src={newrelease2}
-            alt='newrelease1'
-            className='h-auto w-auto px-2 py-2'
-            />
-
-          </div>
-
-          {/* The title */}
-          <div className=" mt-3 text-center text-indigo-900 text-[22px] font-semibold font-['Inter'] capitalize">
-            Great travel at desert
-          </div>
-
-          {/* Authors name */}
-          <div className=" mt-2 text-center text-zinc-500 text-sm font-normal font-['Inter'] capitalize tracking-tight">
-            Sanchit Howdy
-          </div>
-
-          {/* Price */}
-          <div className=" mt-2 text-center text-red-500 text-lg font-bold font-['Inter'] capitalize tracking-tight">
-            $ 38.00
-          </div>
-
-        </div>
-
-        
-
-        {/* New Release 3 */}
-        <div className='flex-col flex hover:transform hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer'
-        onClick={() => {
-          window.open('https://www.goodreads.com/', '_blank');
-        }}
-        >
-          {/* the white rectangle */}
-          <div className="w-[300px] h-[395px] bg-white shadow border border-stone-200">
-
-            <img
-            src={newrelease3}
-            alt='newrelease1'
-            className='h-auto w-auto px-2 py-2'
-            />
-
-          </div>
-
-          {/* The title */}
-          <div className=" mt-3 text-center text-indigo-900 text-[22px] font-semibold font-['Inter'] capitalize">
-          The lady beauty Scarlett
-          </div>
-
-          {/* Authors name */}
-          <div className=" mt-2 text-center text-zinc-500 text-sm font-normal font-['Inter'] capitalize tracking-tight">
-          Arthur Doyle
-          </div>
-
-          {/* Price */}
-          <div className=" mt-2 text-center text-red-500 text-lg font-bold font-['Inter'] capitalize tracking-tight">
-            $ 45.00
-          </div>
-
-        </div>
-        {/* New Release 4 */}
-        <div className='flex-col flex hover:transform hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer'
-        onClick={() => {
-          window.open('https://www.goodreads.com/', '_blank');
-        }}
-        >
-          {/* the white rectangle */}
-          <div className="w-[300px] h-[395px] bg-white shadow border border-stone-200 ">
-
-            <img
-            src={newrelease4}
-            alt='newrelease1'
-            className='h-auto w-auto px-2 py-2'
-            />
-
-          </div>
-
-          {/* The title */}
-          <div className=" mt-3 text-center text-indigo-900 text-[22px] font-semibold font-['Inter'] capitalize">
-          Once upon a time
-          </div>
-
-          {/* Authors name */}
-          <div className=" mt-2 text-center text-zinc-500 text-sm font-normal font-['Inter'] capitalize tracking-tight">
-          Klien Marry
-          </div>
-
-          {/* Price */}
-          <div className=" mt-2 text-center text-red-500 text-lg font-bold font-['Inter'] capitalize tracking-tight">
-            $ 35.00
-          </div>
-
-        </div>
-      </div>
-
+    </div>
     {/* the line */}
       <div className="w-full h-px bg-neutral-200" />
 
@@ -170,7 +100,7 @@ const NewReleases = () => {
     onClick={() => {
       window.open('https://www.goodreads.com/', '_blank');
     }}>
-      <p className="text-right text-red-500 text-base font-bold font-['Inter'] capitalize tracking-tight">
+      <p className="text-right text-red-500 font-bold text-xl font-['Inter'] capitalize tracking-tight">
       View all products
       </p>
       <img 

@@ -27,7 +27,7 @@ const Discounts = () => {
   const seconds = countdown % 60;
 
   return (
-    <div name="main-discount-div" className="w-auto h-auto bg-rose-100 rounded-[20px] mr-12 ml-12">
+    <div name="main-discount-div" className="w-auto h-auto bg-rose-100 rounded-[20px] mr-12 ml-12 my-12 ">
       <div className="flex flex-col md:flex-row p-12 ">
         {/* Left side */}
         <div className="flex flex-col gap-6 lg:w-2/3 lg:gap-7 lg:p-5">

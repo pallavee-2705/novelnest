@@ -30,8 +30,16 @@ const Articles = () => {
         Read our articles
       </div>
       {/* main heading  */}
-      <div className="mt-2 w-[342px] h-[63px] text-center text-cyan-900 text-5xl font-normal font-['Inter'] capitalize">
-        Latest Articles
+      <div className="mt-2 h-24 w-full flex justify-around">
+        <div className='w-1/3 flex items-center justify-center '>
+          <div className='bg-neutral-200 w-2/3 h-px'></div>
+        </div>
+        <div className='flex w-1/3 items-center justify-center'>
+          <div className="text-center text-cyan-900 text-5xl font-normal font-['Inter'] capitalize">Latest Articles</div>
+        </div>
+        <div className='w-1/3 flex items-center justify-center '>
+          <div className='bg-neutral-200 w-2/3 h-px'></div>
+        </div>
       </div>
       {/* articles  */}
 

@@ -30,7 +30,7 @@ const Articles = () => {
         Read our articles
       </div>
       {/* main heading  */}
-      <div className="mt-2 h-24 w-full flex justify-around">
+      <div className="mt-3 h-auto w-full flex justify-around">
         <div className='w-1/3 flex items-center justify-center '>
           <div className='bg-neutral-200 w-2/3 h-px'></div>
         </div>

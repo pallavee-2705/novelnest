@@ -1,5 +1,5 @@
 import React from 'react'
-import { article1, article2, article3 } from '../assets';
+import { article1, article2, article3, arrowarticles } from '../assets';
 
 const Articles = () => {
   const articles = [
@@ -11,7 +11,7 @@ const Articles = () => {
     },
     {
       id: 2,
-      title: 'Great travel at desertReading books always makes the moments happy',
+      title: 'Reading books always makes the moments happy',
       date: '2nd August 2021',
       imageUrl: article2
     },
@@ -24,56 +24,65 @@ const Articles = () => {
   ];
 
   return (
-    <div className="w-full h-auto bg-slate-50 flex flex-col px-12 py-12 gap-5 items-center" >
+    <div className="w-full h-auto bg-slate-50 flex flex-col px-12 py-6 justify-center items-center" >
       {/* first heading  */}
-      <div className="w-[169px] h-[15px] text-center text-neutral-500 text-[13px] font-medium font-['Inter'] uppercase tracking-wider">
+      <div className="w-full h-auto text-center text-neutral-500 text-sm font-medium font-['Inter'] uppercase tracking-wider">
         Read our articles
       </div>
       {/* main heading  */}
-      <div className="mt-2 w-[342px] h-[63px] text-center text-cyan-900 text-5xl font-normal font-['Inter'] capitalize">
+      <div className="mt-2 w-full h-auto text-center text-cyan-900 text-5xl font-normal font-['Inter'] capitalize">
         Latest Articles
       </div>
       {/* articles  */}
-
-
       <div name='main-artcle-div'
-      className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 my-10'>
+      className='grid grid-cols-1 md:grid-cols-2 mt-10 lg:grid-cols-3 gap-8 my-8 px-16 w-full '>
         {articles.map(({id, title, date, imageUrl}) => (
           <div
           key={id}
-          className='flex-col flex hover:transform hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer'
+          className='flex-col flex hover:transform hover:scale-105 hover:text-cyan-900 hover:underline transition-transform duration-300 ease-in-out cursor-pointer gap-2'
           onClick={() => {
           window.open('https://www.goodreads.com/', '_blank');
           }}
           >
             {/* image  */}
-            <div>
+            <div className='w-full h-auto'>
               <img
                 src={imageUrl}
                 alt=""
-                className="rounded-md duration-200 hover:scale-105 w-full h-auto py-2 px-2 "
+                className="rounded-md duration-200 hover:scale-105 w-full h-auto"
               />
             </div>
             {/* date  */}
-            <div className=''>
-              ${date}
+            <div className='mt-2 text-zinc-500 text-sm font-normal tracking-tight'>
+              {date}
             </div>
             {/* Title  */}
-            <div>
+            <div className='text-cyan-900 font-normal text-2xl'>
               {title}
             </div>
             {/* line  */}
-            <div>
-            </div>
+            <div className=" mt-6 w-full h-[1px] bg-stone-300" />
             
           </div>
         ))}
         </div>
     {/* read more button  */}
-    <div>
-              
-    </div>    
+    <div className="lg:w-[250px] lg:h-[56px] text-sm w-2/3  border border-stone-300 font-normal lg:text-lg text-cyan-900 items-center justify-center cursor-pointer p-2 gap-3 flex"
+      onClick={() => {
+        window.open('https://www.goodreads.com/', '_blank');
+      }}
+    >
+    <p>
+    READ ALL ARTICLES        
+    </p>
+    <img 
+      src={arrowarticles}
+      alt='arrow'
+      className='h-3 w-auto'
+      />
     </div>
+ 
+  </div>
   )
 }
 

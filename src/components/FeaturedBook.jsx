@@ -37,21 +37,20 @@ const featBooks = [
 
 const FeaturedBook = () => {
   const [book, setBook] = useState(0);
-  const [opacityClass, setOpacityClass] = useState('scale-100');
   const [isSkewed, setIsSkewed] = useState(false);
-  const [move, setMove] = useState('translate-x-[40px]')
+  const [move, setMove] = useState('translate-x-[80px]')
 
   const handleArrowPress = (direction) => {
     if(direction === 'left' && book>0)
     {
       setBook((prev) => prev-1);
-      setMove('-translate-x-[40px]')
+      setMove('-translate-x-[80px]')
     }
 
     if(direction === 'right' && book<=2)
     {
       setBook((prev) => prev+1);
-      setMove('translate-x-[40px]')
+      setMove('translate-x-[80px]')
     }
 
      // Apply skew effect during transition
@@ -98,7 +97,7 @@ const FeaturedBook = () => {
           <div className={`flex flex-col w-full ${book%2 === 0 ? "items-start" : "items-end"}`}>
             <p className='mb-4 text-2xl font-semibold '>{featBooks[book].heading}</p>
           
-            <p className='text-neutral-500 text-base font-normal max-lg:hidden block'>{featBooks[book].desc}</p>
+            <p className={`text-neutral-500 text-base font-normal max-lg:hidden block ${book%2 === 0 ? "text-start" : "text-end"} `}>{featBooks[book].desc}</p>
           </div>
 
          <div>

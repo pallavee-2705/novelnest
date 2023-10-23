@@ -13,6 +13,9 @@ import newrelease3 from "./newrelease3.png";
 import newrelease4 from "./newrelease4.png"; 
 import logo from "./logo-color.png";
 import arrow from "./arrow.png";
+import ornament from "./ornament.png"
+import ornament1 from "./ornament1.png"
+import ornament2 from "./ornament2.png"
 
 
 
@@ -31,5 +34,8 @@ export {
     newrelease3,
     newrelease4,
     logo,
-    arrow
+    arrow,
+    ornament,
+    ornament1,
+    ornament2
 }

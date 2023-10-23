@@ -30,8 +30,8 @@ const Categories = () => {
   console.log("view more button- ",viewMore);
 
   return (
-    <div className='p-10 mx-12 mt-12 mb-8'>
-      <div className='flex w-full justify-between '>
+    <div className='p-10 mx-12 mt-12 mb-8 flex flex-col justify-between'>
+      <div className='flex w-full justify-between'>
         <div>
           <div className='flex items-center gap-2'>
             <div className='w-8 h-[2px] bg-red-500'/>
@@ -49,8 +49,8 @@ const Categories = () => {
         </div>
       </div>
 
-      <div className={`w-full mt-8 transiton-height delay-100 duration-1000 ${viewMore ? "h-[550px]" : "h-[250px]"} relative`}>
-        <div className={`absolute top-0 left-0  flex flex-row max-sm:flex-col justify-around items-center gap-10 transition-all delay-100 duration-1000 ease-in-out   ${categories===0 ? "opacity-100 translate-x-[0] translate-y-[0] z-10": " z-[-10] opacity-0 "} ${viewMore && "opacity-100"}`}>
+      <div className={`w-full mt-8 transiton-height delay-100 duration-1000 ${viewMore ? "xs:h-[1250px] max-sm:h-[1600px] h-[500px]" : "max-sm:h-[800px] h-[250px]"} relative`}>
+        <div className={`absolute top-0 left-0  flex flex-row max-sm:flex-col justify-around items-center gap-10 transition-all delay-100 duration-1000 ease-in-out ${categories===0 && viewMore && 'opacity-100'} ${categories===1 && viewMore && 'opacity-100'} ${categories===1 && !viewMore && 'opacity-0'}  `}>
           <div >
             <a href='/categories[i]'>
               <img src={categories1} alt="categories1" className={`${styles.categoryPics}`} />
@@ -71,7 +71,7 @@ const Categories = () => {
           </div>        
         </div>
 
-        <div className={`absolute top-0 left-0  flex flex-row max-sm:flex-col  justify-around items-center gap-10 transition-all delay-100 duration-1000 ease-in-out   ${categories===1 ? "opacity-100 translate-x-0 z-10": " opacity-0 z-[-10] " } ${viewMore? "max-h-screen opacity-100 translate-y-[275px]": " opacity-0"} `} >
+        <div className={`absolute top-0 left-0  flex flex-row max-sm:flex-col  justify-around items-center gap-10 transition-all duration-1000 ease-in-out ${categories===0 && viewMore && 'opacity-100 translate-y-[105%] mb-6'} ${categories===1 && viewMore && 'opacity-100 translate-y-[105%] mb-6'} ${categories===0 && !viewMore && 'opacity-0'}    `} >
           <div >
             <a href='/categories[i]'>
               <img src={categories3} alt="categories3" className={`${styles.categoryPics}`}/>
@@ -92,7 +92,8 @@ const Categories = () => {
           </div>
         </div>
       </div>
-      <div className="font-['Inter'] w-full flex justify-center mt-7">
+
+      <div className={`font-['Inter'] w-full flex justify-center mt-7  ${viewMore && " pt-4 "}`}>
         <button onClick={()=>handleViewButton()} className="flex items-center gap-2 border-[1px] border-indigo-900 text-indigo-900 rounded-lg py-3 px-5 hover:scale-105">
           <p className='uppercase tracking-wide font-normal leading-9 flex gap-1 '>View {viewMore ? <p>Less</p> : <p>More</p>}</p> <BsArrowRight />
         </button>

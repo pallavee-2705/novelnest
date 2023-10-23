@@ -14,9 +14,15 @@ import newrelease4 from "./newrelease4.png";
 import logo from "./logo-color.png";
 import arrow from "./arrow.png";
 import arrowarticles from "./arrow_articles.png";
-import ornament from "./ornament.png"
-import ornament1 from "./ornament1.png"
-import ornament2 from "./ornament2.png"
+import ornament from "./ornament.png";
+import ornament1 from "./ornament1.png";
+import ornament2 from "./ornament2.png";
+import footerlogo from "./footer_logo.png";
+import facebook from "./facebook.jpg";
+import linkedin from "./linkedin.jpg";
+import twitter from "./twitter.jpeg";
+import youtube from "./youtube.png";
+
 
 
 
@@ -39,5 +45,10 @@ export {
     arrowarticles,
     ornament,
     ornament1,
-    ornament2
+    ornament2,
+    footerlogo,
+    facebook,
+    linkedin,
+    twitter,
+    youtube
 }

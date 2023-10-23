@@ -6,7 +6,7 @@ import { styles } from '../styles';
 
 const Categories = () => {
   const [categories, setCategories] = useState(0)
-  const [button, setButton] = useState(false);
+  const [viewMore, setViewMore] = useState(false);
 
   const handleArrowPress = (direction) => {
     if(direction === 'left')
@@ -21,23 +21,16 @@ const Categories = () => {
     
   }
 
-  const handleButtonPress = () => {
-    setButton((prev) => !prev);
-
-    if(button===true)
-    {
-      setCategories(2);
-    } else if(button === false)
-    {
-      setCategories(0);
-    }
+  const handleViewButton = () => {
+    setViewMore((prev) => !prev);
   }
 
-  console.log(categories);
-  console.log(button);
+  console.log("categories-",categories);
+  // console.log(button);
+  console.log("view more button- ",viewMore);
 
   return (
-    <div className='p-10 mx-12'>
+    <div className='p-10 mx-12 mt-12 mb-8 flex flex-col justify-between'>
       <div className='flex w-full justify-between'>
         <div>
           <div className='flex items-center gap-2'>
@@ -56,52 +49,53 @@ const Categories = () => {
         </div>
       </div>
 
-      <div className='w-full mt-8'>
-        <div className={`flex flex-row max-sm:flex-col  justify-around items-center gap-10 ${categories===0 || categories===2 ? "block": "hidden"}`}>
-        <div className={`${styles.categoryPics}`}>
-          <a href='https://www.youtube.com'>
-            <img src={categories1} alt="categories1" />
-            <p className={`${styles.categoryHeadings}`}>Higher Education</p>
-          </a>
-        </div>
-        <div className=''>
-          <a href='https://www.youtube.com'>
-            <img src={categories2} alt="categories2" />
-            <p className={`${styles.categoryHeadings}`}>Management Books</p>
-          </a>
-        </div>
-        <div className=''>
-          <a href='https://www.youtube.com'>
-            <img src={categories3} alt="categories3" />
-            <p className={`${styles.categoryHeadings}`}>Engineering Books</p>
-          </a>
-        </div>        
+      <div className={`w-full mt-8 transiton-height delay-100 duration-1000 ${viewMore ? "xs:h-[1250px] max-sm:h-[1600px] h-[500px]" : "max-sm:h-[800px] h-[250px]"} relative`}>
+        <div className={`absolute top-0 left-0  flex flex-row max-sm:flex-col justify-around items-center gap-10 transition-all delay-100 duration-1000 ease-in-out ${categories===0 && viewMore && 'opacity-100'} ${categories===1 && viewMore && 'opacity-100'} ${categories===1 && !viewMore && 'opacity-0'}  `}>
+          <div >
+            <a href='/categories[i]'>
+              <img src={categories1} alt="categories1" className={`${styles.categoryPics}`} />
+              <p className={`${styles.categoryHeadings}`}>Higher Education 1</p>
+            </a>
+          </div>
+          <div className=''>  
+            <a href='/categories[i]'>
+              <img src={categories2} alt="categories2" className={`${styles.categoryPics}`} />
+              <p className={`${styles.categoryHeadings}`}>Management Books 1</p>
+            </a>
+          </div>
+          <div className=''>
+            <a href='/categories[i]'>
+              <img src={categories3} alt="categories3" className={`${styles.categoryPics}`} />
+              <p className={`${styles.categoryHeadings}`}>Engineering Books 1</p>
+            </a>
+          </div>        
         </div>
 
-        <div className={`flex flex-row max-sm:flex-col  justify-around items-center gap-10 ${categories===1 || categories===2 ? "block": "hidden"}`}>
-        <div className=''>
-          <a href='https://www.youtube.com'>
-            <img src={categories3} alt="categories3" />
-            <p className={`${styles.categoryHeadings}`}>Engineering Books</p>
-          </a>
-        </div>
-        <div className=''>
-          <a href='https://www.youtube.com'>
-            <img src={categories2} alt="categories2" />
-            <p className={`${styles.categoryHeadings}`}>Management Books</p>
-          </a>
-        </div>
-        <div className={`${styles.categoryPics}`}>
-          <a href='https://www.youtube.com'>
-            <img src={categories1} alt="categories1" />
-            <p className={`${styles.categoryHeadings}`}>Higher Education</p>
-          </a>
-        </div>
+        <div className={`absolute top-0 left-0  flex flex-row max-sm:flex-col  justify-around items-center gap-10 transition-all duration-1000 ease-in-out ${categories===0 && viewMore && 'opacity-100 translate-y-[105%] mb-6'} ${categories===1 && viewMore && 'opacity-100 translate-y-[105%] mb-6'} ${categories===0 && !viewMore && 'opacity-0'}    `} >
+          <div >
+            <a href='/categories[i]'>
+              <img src={categories3} alt="categories3" className={`${styles.categoryPics}`}/>
+              <p className={`${styles.categoryHeadings}`}>Engineering Books</p>
+            </a>
+          </div>
+          <div className=''>
+            <a href='/categories[i]>@####'>
+              <img src={categories2} alt="categories2" className={`${styles.categoryPics}`}/>
+              <p className={`${styles.categoryHeadings}`}>Management Books</p>
+            </a>
+          </div>
+          <div >
+            <a href='/categories[i]'>
+              <img src={categories1} alt="categories1" className={`${styles.categoryPics}`}/>
+              <p className={`${styles.categoryHeadings}`}>Higher Education</p>
+            </a>
+          </div>
         </div>
       </div>
-      <div className="font-['Inter'] w-full flex justify-center mt-7">
-        <button onClick={()=>handleButtonPress()} className="flex items-center gap-2 border-[1px] border-indigo-900 text-indigo-900 rounded-lg py-3 px-5 hover:scale-105">
-          <p className='uppercase tracking-wide font-normal leading-9 flex gap-1 '>View {button ? <p>More</p> : <p>Less</p>}</p> <BsArrowRight />
+
+      <div className={`font-['Inter'] w-full flex justify-center mt-7  ${viewMore && " pt-4 "}`}>
+        <button onClick={()=>handleViewButton()} className="flex items-center gap-2 border-[1px] border-indigo-900 text-indigo-900 rounded-lg py-3 px-5 hover:scale-105">
+          <p className='uppercase tracking-wide font-normal leading-9 flex gap-1 '>View {viewMore ? <p>Less</p> : <p>More</p>}</p> <BsArrowRight />
         </button>
       </div>
     </div>

@@ -29,6 +29,7 @@ const banners = [
 const Banner = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [buttonPressed, setButtonPressed] = useState(false);
 
   const handleArrowPress = (direction) => {
     if (direction === 'left' && currentIndex > 0) {
@@ -38,8 +39,16 @@ const Banner = () => {
       setCurrentIndex(currentIndex + 1);   
       console.log("right");
     }
+
+    setButtonPressed(true);
+
+    setTimeout(() => {
+      setButtonPressed(false);
+    }, 1000)
+
   }
 
+  console.log(buttonPressed);
 
   return (
     <div className="w-auto h-[500px] px-5 bg-gradient-to-r from-[#FFE5E5] via-[#F5FFFE] to-[#FFFFFF] flex flex-row justify-evenly">
@@ -50,7 +59,7 @@ const Banner = () => {
       </div>
 
       <div className='w-3/4 h-full overflow-hidden '>
-        <div className={`relative h-full transition-transform duration-1000 ease-in-out -translate-x-[${currentIndex * 25}%] w-[400%] flex justify-between`}>
+        <div className={`relative h-full delay-100 ${buttonPressed ? "opacity-10 scale-90" : "opacity-100 scale-100"} transition-all duration-1000 ease-in-out -translate-x-[${currentIndex * 25}%] w-[400%] flex justify-between`}>
           {banners.map((banner, index) => (
             <div key={index} className='relative h-full w-1/4 p-10 flex justify-start'>
             <div className=' flex flex-row w-full justify-between gap-10 '>
@@ -58,9 +67,9 @@ const Banner = () => {
                 <div className="text-6xl max-lg:text-3xl font-semibold tracking-wide">{banner.heading}</div>
                 <p className='font-medium text-lg max-lg:text-sm text-opacity-80 tracking-wider'>{banner.desc}</p>
                 <div className='my-2 '> 
-                  <button className="flex items-center gap-2 border-[1px] border-indigo-900 rounded-lg py-3 px-5 hover:bg-white">
-                    <p className='uppercase tracking-wide font-normal leading-9'>Read More</p> <BsArrowRight />
-                  </button>
+                  <a href={`/books/${banner.heading}`} className="flex w-1/2 items-center justify-center gap-2 border-[1px] border-indigo-900 rounded-lg py-3 px-5 hover:bg-white">
+                    <p className='uppercase tracking-wide font-normal leading-9 max-lg:text-xs'>Read More</p> <BsArrowRight className='max-md:w-5 max-md:h-5'/>
+                  </a>
                 </div>
                 
               </div>

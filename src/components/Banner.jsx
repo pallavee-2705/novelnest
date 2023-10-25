@@ -48,7 +48,7 @@ const Banner = () => {
 
   }
 
-  console.log(buttonPressed);
+  // console.log(buttonPressed, currentIndex);
 
   return (
     <div className="w-auto h-[500px] px-5 bg-gradient-to-r from-[#FFE5E5] via-[#F5FFFE] to-[#FFFFFF] flex flex-row justify-evenly">
@@ -59,7 +59,7 @@ const Banner = () => {
       </div>
 
       <div className='w-3/4 h-full overflow-hidden '>
-        <div className={`relative h-full delay-100 ${buttonPressed ? "opacity-10 scale-90" : "opacity-100 scale-100"} transition-all duration-1000 ease-in-out -translate-x-[${currentIndex * 25}%] w-[400%] flex justify-between`}>
+        <div className={`relative h-full delay-100  transition-all duration-1000 ease-in-out -translate-x-${currentIndex}/4 w-[400%] flex justify-between`}>
           {banners.map((banner, index) => (
             <div key={index} className='relative h-full w-1/4 p-10 flex justify-start'>
             <div className=' flex flex-row w-full justify-between gap-10 '>

@@ -37,17 +37,28 @@ const featBooks = [
 
 const FeaturedBook = () => {
   const [book, setBook] = useState(0);
+  const [opacityClass, setOpacityClass] = useState('scale-100');
+  const [isSkewed, setIsSkewed] = useState(false);
+  const [move, setMove] = useState('translate-x-[40px]')
 
   const handleArrowPress = (direction) => {
     if(direction === 'left' && book>0)
     {
       setBook((prev) => prev-1);
+      setMove('-translate-x-[40px]')
     }
 
     if(direction === 'right' && book<=2)
     {
       setBook((prev) => prev+1);
+      setMove('translate-x-[40px]')
     }
+
+     // Apply skew effect during transition
+    setIsSkewed(true);
+    setTimeout(() => {
+      setIsSkewed(false);
+    }, 500); // Adjust the duration to match your transition
     
   }
 
@@ -63,7 +74,7 @@ const FeaturedBook = () => {
 
 
       <div>
-      <div className={`flex ${book%2===0 ? "flex-row" : "flex-row-reverse"}  w-full justify-between`}>
+      <div className={`flex ${book%2===0 ? "flex-row" : "flex-row-reverse"}  w-full justify-between transform ${isSkewed ? move : 'translate-x-0'}  transition-transform duration-500 ease-in-out`}>
         <a href='/featuredbook[i]' className='flex flex-col w-1/2 max-md:w-full items-center justify-center px-10 pt-10 cursor-pointer'>
           <div className=''>
           <h2 className="flex w-full justify-center items-center py-2 font-['Inter'] text-indigo-900 font-semibold text-4xl sm:text-3xl max-md:block hidden mb-5">Feature Book</h2>
@@ -96,15 +107,15 @@ const FeaturedBook = () => {
 
           <a href='/featuredbooks' className='mt-10'>
             <button onClick={()=>{}} className="flex items-center gap-2 border-[1px] border-indigo-900 text-indigo-900 rounded-lg py-3 px-5 hover:scale-105">
-              <p className='uppercase tracking-wide font-normal leading-9 flex gap-1 '>View More</p> <BsArrowRight />
+              <p className='uppercase tracking-wide font-normal leading-9 flex gap-1 '>Read More</p> <BsArrowRight />
             </button>
           </a>
         </div>
         </div>
       </div>
 
-      <div className='flex items-center justify-center p-8'>
-        <div className='flex gap-1 mt-5'>
+      <div className='flex items-center justify-center'>
+        <div className='flex gap-1 mb-5'>
             {featBooks.map((featurebook, index)=>(
               <div className={`p-3 ${index===book && "border-[1px] border-red-500 rounded-full"}`}>
                 <div className={`w-3 h-3 rounded-full ${index===book ? "bg-red-500 " : 'bg-stone-300'}`}/>

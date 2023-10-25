@@ -1,5 +1,5 @@
 import React from 'react'
-import {footerlogo} from '../assets';
+import {footerlogo, ornament2, ornament1} from '../assets';
 import {FaFacebook, FaYoutube, FaLinkedin} from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 const Footer = () => {
@@ -105,27 +105,27 @@ const Footer = () => {
 
             </div>
             {/* socials */}
-            <div className='flex gap-10 p-4'>
+            <div className='flex gap-10 p-4 '>
               {/* facebook  */}
-              <div className="social-icon">
+              <div className="social-icon hover:scale-110 transition-transform duration-250 ease-in-out">
                 <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
                   <FaFacebook size={40} color="white" />
                 </a>
               </div>
               {/* twitter  */}
-              <div className="social-icon">
+              <div className="social-icon hover:scale-110 transition-transform duration-250 ease-in-out">
                 <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
                   <FaXTwitter size={40} color="white" />
                 </a>
               </div>
               {/* youtube  */}
-              <div className="social-icon">
+              <div className="social-icon hover:scale-110 transition-transform duration-250 ease-in-out">
                 <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
                   <FaYoutube size={40} color="white" />
                 </a>
               </div>
               {/* linkedin  */}
-              <div className="social-icon">
+              <div className="social-icon hover:scale-110 transition-transform duration-250 ease-in-out">
                 <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
                   <FaLinkedin size={40} color="white" />
                 </a>
@@ -149,6 +149,7 @@ const Footer = () => {
                 onClick={() => {
                   window.open(link.link, "_blank");
                 }}
+                className='hover:scale-105'
               >
                 {link.title}
               </div>
@@ -173,6 +174,7 @@ const Footer = () => {
                 onClick={() => {
                   window.open(link.link, "_blank");
                 }}
+                className='hover:scale-105'
               >
                 {link.title}
               </div>
@@ -197,6 +199,7 @@ const Footer = () => {
       </div>
 
       </div>
+      
     </div>
   )
 }

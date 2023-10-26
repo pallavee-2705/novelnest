@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import banner1 from "../assets/banner1.png"
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-import { useRef } from 'react';
 
 const banners = [
   {

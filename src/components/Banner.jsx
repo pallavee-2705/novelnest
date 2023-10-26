@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import banner1 from "../assets/banner1.png"
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
@@ -27,53 +27,70 @@ const banners = [
 
 
 const Banner = () => {
-  const [book, setBook] = useState(0);
 
-  const handleArrowPress = (direction) => {
-    if(direction === 'left' && book>0)
-    {
-      setBook((prev) => prev-1);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [buttonPressed, setButtonPressed] = useState(false);
+  const bannerRef = useRef(null);
+
+  const handleArrowPress = async (direction) => {
+    if (direction === 'left' && currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+      console.log("left");
+    } else if (direction === 'right' && currentIndex < 3) {
+      setCurrentIndex(currentIndex + 1);   
+      console.log("right");
     }
 
-    if(direction === 'right' && book<=2)
-    {
-      setBook((prev) => prev+1);
-    }
-    
+    setButtonPressed(true);
+
+    setTimeout(() => {
+      setButtonPressed(false);
+    }, 1000)
+
   }
 
-  console.log(book);
+  useEffect(() => {
+    const translateX = -currentIndex * 25;
+
+    bannerRef.current.style.transform = `translateX(${translateX}%)`;
+  }, [currentIndex]);
+
+  // console.log(buttonPressed, currentIndex);
 
   return (
-    <div className="w-auto h-[500px] px-5 bg-gradient-to-r from-[#FFE5E5] via-[#F5FFFE] to-[#FFFFFF] flex flex-row justify-between">
+    <div className="w-auto h-[500px] px-5 bg-gradient-to-r from-[#FFE5E5] via-[#F5FFFE] to-[#FFFFFF] flex flex-row justify-evenly">
       <div className='h-full flex flex-col justify-center items-center p-3'>
         <button onClick={()=>handleArrowPress('left')} className='border-[1px] border-[#ED553B] bg-white p-2 rounded-full hover:bg-[#ED553B] text-[#ED553B] hover:text-white'>
           <BsArrowLeft/>
         </button>
       </div>
 
-      <div className='flex flex-row w-3/4 justify-between gap-10'>
-        <div className="w-3/4 flex flex-col justify-center gap-3 font-['Inter'] text-indigo-900 max-sm:hidden block">
-          <div className="text-6xl max-md:text-3xl font-semibold tracking-wide">{banners[book].heading}</div>
-          <p className='font-medium text-lg max-md:text-sm text-opacity-80 tracking-wider'>{banners[book].desc}</p>
-          <div className='my-2 '> 
-            <button className="flex items-center gap-2 border-[1px] border-indigo-900 rounded-lg py-3 px-5 hover:bg-white">
-              <p className='uppercase tracking-wide font-normal leading-9'>Read More</p> <BsArrowRight />
-            </button>
-          </div>
-          <div className='flex gap-1 mt-5'>
-            {banners.map((banner, index)=>(
-              <div className={`p-3 ${index===book && "border-[1px] border-red-500 rounded-full"}`}>
-                <div className={`w-3 h-3 rounded-full ${index===book ? "bg-red-500 " : 'bg-stone-300'}`}/>
+      <div className='w-3/4 h-full overflow-hidden '>
+        <div ref={bannerRef} className='relative h-full w-[400%] flex justify-between relative h-full delay-100  transition-all duration-1000 ease-in-out'>
+          {banners.map((banner, index) => (
+            <div key={index} className='relative h-full w-1/4 p-10 flex justify-start'>
+            <div className=' flex flex-row w-full justify-between gap-10 '>
+              <div className="w-1/2 flex flex-col justify-center gap-3 font-['Inter'] text-indigo-900 max-sm:hidden block">
+                <div className="text-6xl max-lg:text-3xl font-semibold tracking-wide">{banner.heading}</div>
+                <p className='font-medium text-lg max-lg:text-sm text-opacity-80 tracking-wider'>{banner.desc}</p>
+                <div className='my-2 '> 
+                  <a href={`/books/${banner.heading}`} className="flex w-1/2 items-center justify-center gap-2 border-[1px] border-indigo-900 rounded-lg py-3 px-5 hover:bg-white">
+                    <p className='uppercase tracking-wide font-normal leading-9 max-lg:text-xs'>Read More</p> <BsArrowRight className='max-md:w-5 max-md:h-5'/>
+                  </a>
+                </div>
+                
               </div>
-            ))}
+  
+              <div className='h-full'>
+       
+                <img src={banner.image} alt="banner" className="h-full max-lg:py-10 w-full" title={banner.heading}/>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div>
-          <img src={banners[book].image} alt="banner" className="w-[500px] h-[500px] max-sm:py-10" title={banners[book].heading}/>
+          ))}
         </div>
       </div>
+
 
       <div className='h-full flex flex-col justify-center items-center p-3'>
         <button onClick={()=>handleArrowPress('right')} className='border-[1px] border-[#ED553B] bg-white p-2 rounded-full hover:bg-[#ED553B] text-[#ED553B] hover:text-white'>

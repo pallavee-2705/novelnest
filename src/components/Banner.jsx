@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import banner1 from "../assets/banner1.png"
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { useRef } from 'react';
 
 const banners = [
   {
@@ -30,8 +31,9 @@ const Banner = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [buttonPressed, setButtonPressed] = useState(false);
+  const bannerRef = useRef(null);
 
-  const handleArrowPress = (direction) => {
+  const handleArrowPress = async (direction) => {
     if (direction === 'left' && currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
       console.log("left");
@@ -48,6 +50,13 @@ const Banner = () => {
 
   }
 
+  useEffect(() => {
+    const translateX = -currentIndex * 25;
+
+    bannerRef.current.style.transform = `translateX(${translateX}%)`;
+  }, [currentIndex]);
+
+  // console.log(buttonPressed, currentIndex);
 
   return (
     <div className="w-auto h-[500px] px-5 bg-gradient-to-r from-[#FFE5E5] via-[#F5FFFE] to-[#FFFFFF] flex flex-row justify-evenly">
@@ -58,7 +67,7 @@ const Banner = () => {
       </div>
 
       <div className='w-3/4 h-full overflow-hidden '>
-        <div className={`relative h-full delay-100 ${buttonPressed ? "opacity-10 scale-90" : "opacity-100 scale-100"} transition-all duration-1000 ease-in-out -translate-x-[${currentIndex * 25}%] w-[400%] flex justify-between`}>
+        <div ref={bannerRef} className='relative h-full w-[400%] flex justify-between relative h-full delay-100  transition-all duration-1000 ease-in-out'>
           {banners.map((banner, index) => (
             <div key={index} className='relative h-full w-1/4 p-10 flex justify-start'>
             <div className=' flex flex-row w-full justify-between gap-10 '>
@@ -95,14 +104,3 @@ const Banner = () => {
 }
 
 export default Banner
-
-
-
-
-// <div className='flex gap-1 mt-5'>
-//                   {banners.map((banner, index)=>(
-//                     <div className={`p-3 ${index===book && "border-[1px] border-red-500 rounded-full"}`}>
-//                       <div className={`w-3 h-3 rounded-full ${index===book ? "bg-red-500 " : 'bg-stone-300'}`}/>
-//                     </div>
-//                   ))}
-//                 </div>

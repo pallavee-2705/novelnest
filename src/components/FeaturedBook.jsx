@@ -37,7 +37,7 @@ const featBooks = [
 
 const FeaturedBook = () => {
   const [book, setBook] = useState(0);
-  const [opacityClass, setOpacityClass] = useState('scale-100');
+  // const [opacityClass, setOpacityClass] = useState('scale-100');
   const [isSkewed, setIsSkewed] = useState(false);
   const [move, setMove] = useState('translate-x-[40px]')
 

@@ -2,6 +2,7 @@ import React from 'react'
 import {footerlogo} from '../assets';
 import {FaFacebook, FaYoutube, FaLinkedin} from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import { ornament1, ornament2, ornament } from '../assets';
 const Footer = () => {
   const footerLinks = [
 
@@ -63,34 +64,22 @@ const Footer = () => {
     }
   ];
   return (
-      <div className="w-full h-auto bg-red-500 flex py-12">
+      <div className="w-full h-auto bg-red-500 flex">
 
 
       {/* Design  */}
-      <div className="opacity-30 w-[205.53px] h-[158px] relative">
-      <div className="w-[15.41px] h-[15.41px] left-[-0px] top-[142.59px] absolute bg-zinc-100" />
-      <div className="w-[15.41px] h-[15.41px] left-[-0px] top-[95.06px] absolute bg-zinc-100" />
-      <div className="w-[15.41px] h-[15.41px] left-[-0px] top-[47.53px] absolute bg-zinc-100" />
-      <div className="w-[15.41px] h-[15.41px] left-0 top-0 absolute bg-zinc-100" />
-      <div className="w-[15.41px] h-[15.41px] left-[47.53px] top-[142.59px] absolute bg-zinc-100" />
-      <div className="w-[15.41px] h-[15.41px] left-[47.53px] top-[95.06px] absolute bg-zinc-100" />
-      <div className="w-[15.41px] h-[15.41px] left-[47.53px] top-[47.53px] absolute bg-zinc-100" />
-      <div className="w-[15.41px] h-[15.41px] left-[47.53px] top-0 absolute bg-red-500" />
-      <div className="w-[15.41px] h-[15.41px] left-[95.06px] top-[142.59px] absolute bg-zinc-100" />
-      <div className="w-[15.41px] h-[15.41px] left-[95.06px] top-[95.06px] absolute bg-zinc-100" />
-      <div className="w-[15.41px] h-[15.41px] left-[95.06px] top-[47.53px] absolute bg-amber-400" />
-      <div className="w-[15.41px] h-[15.41px] left-[95.06px] top-0 absolute bg-zinc-100" />
-
+      <div className="opacity-30">
+        <img src={ornament} alt="ornament" className='max-sm:h-[150px]'/>
       </div>
 
 
 
       {/* outer div  */}
-      <div className='flex flex-col py-10 gap-24 mt-6'>
+      <div className='flex flex-col pt-10 w-auto h-auto'>
       {/* main div 1  */}
-      <div className='flex gap-32 w-full px-10 '>
+      <div className='flex max-md:flex-col gap-20 max-lg:gap-10 w-full px-10 items-center'>
       {/* first column  */}
-      <div className='flex flex-col gap-8 w-1/3'>
+      <div className='flex flex-col gap-8 w-1/3 h-full max-md:w-full'>
             {/* logo  */}
             <div>
               <img src={footerlogo} 
@@ -105,35 +94,35 @@ const Footer = () => {
 
             </div>
             {/* socials */}
-            <div className='flex gap-10 p-4 '>
+            <div className='flex py-2 w-full'>
               {/* facebook  */}
-              <div className="social-icon hover:scale-110 transition-transform duration-250 ease-in-out">
+              <div className="social-icon hover:scale-110 transition-transform duration-250 ease-in-out w-1/4 h-full">
                 <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                  <FaFacebook size={40} color="white" />
+                  <FaFacebook className='w-10 h-10 max-md:w-5 max-md:h-5'  color="white" />
                 </a>
               </div>
               {/* twitter  */}
-              <div className="social-icon hover:scale-110 transition-transform duration-250 ease-in-out">
+              <div className="social-icon hover:scale-110 transition-transform duration-250 ease-in-out w-1/4">
                 <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-                  <FaXTwitter size={40} color="white" />
+                  <FaXTwitter className='w-10 h-10 max-md:w-5 max-md:h-5' color="white" />
                 </a>
               </div>
               {/* youtube  */}
-              <div className="social-icon hover:scale-110 transition-transform duration-250 ease-in-out">
+              <div className="social-icon hover:scale-110 transition-transform duration-250 ease-in-out w-1/4">
                 <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
-                  <FaYoutube size={40} color="white" />
+                  <FaYoutube className='w-10 h-10 max-md:w-5 max-md:h-5' color="white" />
                 </a>
               </div>
               {/* linkedin  */}
-              <div className="social-icon hover:scale-110 transition-transform duration-250 ease-in-out">
+              <div className="social-icon hover:scale-110 transition-transform duration-250 ease-in-out w-1/4">
                 <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-                  <FaLinkedin size={40} color="white" />
+                  <FaLinkedin className='w-10 h-10 max-md:w-5 max-md:h-5' color="white" />
                 </a>
               </div>
             </div>
       </div>
       {/* second column  */}
-      <div className='gap-6 flex flex-col'>
+      <div className='gap-6 flex flex-col w-1/3 h-full max-md:w-full'>
             {/* heading  */}
             <div className='uppercase text-white text-2xl'>
               <p>
@@ -158,16 +147,16 @@ const Footer = () => {
             </div>
       </div>
       {/* third column  */}
-      <div className='gap-6 flex flex-col'>
+      <div className='gap-6 flex flex-col w-1/3 h-full max-md:w-full'>
             {/* heading  */}
-            <div className='uppercase text-white text-2xl'>
+            <div className='uppercase text-white text-2xl max-lg:text-xl'>
               <p>
                 important links
               </p>
 
             </div>
             {/* links  */}
-            <div className='flex flex-col gap-3 text-white text-lg cursor-pointer'>
+            <div className='flex flex-col gap-3 text-white text-lg max-lg:text-md cursor-pointer'>
             {importantLinks.map((link) => (
               <div 
                 key={link.id}
@@ -186,16 +175,19 @@ const Footer = () => {
       </div>
 
       {/* main div 2  */}
-      <div className='flex text-lg font-light w-full px-10 text-white justify-between'>
+      <div className='flex max-md:flex-col text-lg font-light px-10 py-12 text-white justify-between'>
       {/* copyrights  */}
-      <div>
+      <div className=''>
       © 2022 Arihant. All Rights Reserved.
       </div>
       {/* privacy  */}
-      <div className='font-normal mr-6'>
+      <div className='font-normal '>
       Privacy | Terms of Service
       </div>
 
+      </div>
+      <div className="flex justify-end h-auto">
+        <img src={ornament2} alt="ornament" className='h-[100px] opacity-30'/>
       </div>
 
       </div>

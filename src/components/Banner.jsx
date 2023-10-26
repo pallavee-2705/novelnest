@@ -48,7 +48,6 @@ const Banner = () => {
 
   }
 
-  console.log(buttonPressed);
 
   return (
     <div className="w-auto h-[500px] px-5 bg-gradient-to-r from-[#FFE5E5] via-[#F5FFFE] to-[#FFFFFF] flex flex-row justify-evenly">

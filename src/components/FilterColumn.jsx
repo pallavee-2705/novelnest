@@ -3,9 +3,14 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 import { styles } from '../styles';
 
-const languageOptions = ['English', 'Spanish', 'French', 'Russian']
+const languageOptions = [
+    { label: 'English', value: 'en' },
+    { label: 'Spanish', value: 'es' },
+    { label: 'French', value: 'fr' },
+    { label: 'Russian', value: 'ru' },
+  ];
 
-const FilterColumn = () => {
+const FilterColumn = ({updateFilterData}) => {
     const [price, setPrice] = useState(true);
     const [language, setLanguage] = useState(false);
     const [bookType, setBookType] = useState(false);
@@ -40,28 +45,26 @@ const FilterColumn = () => {
         if (type === 'checkbox' && name === 'lang') {
             // Create a copy of the current form.languages array
             const updatedLanguages = [...form.languages];
-    
+
             if (checked) {
-                // If the checkbox is checked, add the language to the array
-                updatedLanguages.push(value);
+            // If the checkbox is checked, add the language to the array
+            updatedLanguages.push(value);
             } else {
-                // If the checkbox is unchecked, remove the language from the array
-                const index = updatedLanguages.indexOf(value);
-                if (index !== -1) {
-                    updatedLanguages.splice(index, 1);
-                }
+            // If the checkbox is unchecked, remove the language from the array
+            const index = updatedLanguages.indexOf(value);
+            if (index !== -1) {
+                updatedLanguages.splice(index, 1);
             }
-    
-            // Update the form state with the updated languages array
-            setForm((prevForm) => ({
-                ...prevForm,
-                languages: updatedLanguages,
-            }));
+            }
+
+            // Update the filter data with the updated languages
+            updateFilterData({ languages: updatedLanguages });
         } else if (name === 'low_price' || name === 'high_price') {
             setForm((prevForm) => ({
                 ...prevForm,
                 [name]: value,
             }));
+            updateFilterData({[name]:value});
         }
     }
 
@@ -147,8 +150,8 @@ const FilterColumn = () => {
                 <div className='border border-indigo-900 bg-gray-300 rounded-md shadow-md h-[60px] overflow-scroll no-scrollbar p-2 my-2'>
                     {languageOptions.map((lang, index)=>(
                         <label key={index} className='flex items-center space-2'>
-                            <input type='checkbox' value={lang} name='lang' onChange={handleInput} className='text-blue-600 border border-gray-300 rounded focus:ring-2 focus:ring-blue-400 h-5 w-5' />
-                            <span className='w-full text-center tracking-widest max-md:tracking-tight leading-loose font-medium text-indigo-900 hover:scale-105'>{lang}</span>
+                            <input type='checkbox' value={lang.value} name='lang' onChange={handleInput} className='text-blue-600 border border-gray-300 rounded focus:ring-2 focus:ring-blue-400 h-5 w-5' />
+                            <span className='w-full text-center tracking-widest max-md:tracking-tight leading-loose font-medium text-indigo-900 hover:scale-105'>{lang.label}</span>
                         </label>
                     ))}
                 </div>

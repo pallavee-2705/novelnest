@@ -64,7 +64,7 @@ const Footer = () => {
     }
   ];
   return (
-      <div className="w-full h-auto bg-red-500 flex">
+      <div className="w-full h-auto bg-red-500 flex pb-10">
 
 
       {/* Design  */}
@@ -75,11 +75,11 @@ const Footer = () => {
 
 
       {/* outer div  */}
-      <div className='flex flex-col pt-10 w-auto h-auto'>
+      <div className='flex flex-col pt-12 w-full h-auto gap-24 px-16 pr-24'>
       {/* main div 1  */}
-      <div className='flex max-md:flex-col gap-20 max-lg:gap-10 w-full px-10 items-center'>
+      <div className='flex w-full max-md:flex-col gap-20 max-lg:gap-10 justify-between'>
       {/* first column  */}
-      <div className='flex flex-col gap-8 w-1/3 h-full max-md:w-full'>
+      <div className='flex flex-col gap-12 h-full w-1/3 max-md:w-full'>
             {/* logo  */}
             <div>
               <img src={footerlogo} 
@@ -121,33 +121,9 @@ const Footer = () => {
               </div>
             </div>
       </div>
+      
       {/* second column  */}
-      <div className='gap-6 flex flex-col w-1/3 h-full max-md:w-full'>
-            {/* heading  */}
-            <div className='uppercase text-white text-2xl'>
-              <p>
-                company
-              </p>
-
-            </div>
-            {/* links  */}
-            <div className='flex flex-col gap-3 text-white text-lg uppercase cursor-pointer'>
-            {footerLinks.map((link) => (
-              <div 
-                key={link.id}
-                onClick={() => {
-                  window.open(link.link, "_blank");
-                }}
-                className='hover:scale-105'
-              >
-                {link.title}
-              </div>
-            ))}
-
-            </div>
-      </div>
-      {/* third column  */}
-      <div className='gap-6 flex flex-col w-1/3 h-full max-md:w-full'>
+      <div className='gap-6 flex flex-col h-full max-md:w-full'>
             {/* heading  */}
             <div className='uppercase text-white text-2xl max-lg:text-xl'>
               <p>
@@ -175,20 +151,20 @@ const Footer = () => {
       </div>
 
       {/* main div 2  */}
-      <div className='flex max-md:flex-col text-lg font-light px-10 py-12 text-white justify-between'>
+      <div className='flex max-md:flex-col text-lg font-light text-white justify-between'>
       {/* copyrights  */}
-      <div className=''>
+      <div>
       © 2022 Arihant. All Rights Reserved.
       </div>
       {/* privacy  */}
-      <div className='font-normal '>
+      <div>
       Privacy | Terms of Service
       </div>
 
       </div>
-      <div className="flex justify-end h-auto">
+      {/* <div className="flex justify-end h-auto">
         <img src={ornament2} alt="ornament" className='h-[100px] opacity-30'/>
-      </div>
+      </div> */}
 
       </div>
       

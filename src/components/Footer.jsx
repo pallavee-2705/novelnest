@@ -2,46 +2,9 @@ import React from 'react'
 import {footerlogo} from '../assets';
 import {FaFacebook, FaYoutube, FaLinkedin} from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import { ornament2, ornament } from '../assets';
+import { ornament } from '../assets';
 const Footer = () => {
-  const footerLinks = [
-
-    {
-      id: 1,
-      title: 'Home',
-      link: 'https://www.goodreads.com',
-
-    },
-    {
-      id: 2,
-      title :'About Us',
-      link: 'https://www.goodreads.com',
-
-    },
-    {
-      id: 3,
-      title: 'Books',
-      link: 'https://www.goodreads.com',
-
-    },
-    {
-      id: 4,
-      title: 'New Release',
-      link: 'https://www.goodreads.com',
-
-    },
-    {
-      id: 5,
-      title: 'Contact Us',
-      link: 'https://www.goodreads.com',
-    },
-    {
-      id: 6,
-      title: 'Blog',
-      link: 'https://www.goodreads.com',
-    }
-
-  ];
+  
   const importantLinks = [
 
     {

@@ -10,5 +10,6 @@ import NewsLetter from "./NewsLetter";
 import BookNavBar from "./BookNavBar";
 import BookCard from "./BookCard";
 import FilterColumn from "./FilterColumn";
+import SortBar from "./SortBar";
 
-export {Articles, Banner, Categories, Discounts, FeaturedBook, Footer, Navbar, NewReleases, NewsLetter, BookNavBar, BookCard, FilterColumn}
+export {Articles, Banner, Categories, Discounts, FeaturedBook, Footer, Navbar, NewReleases, NewsLetter, BookNavBar, BookCard, FilterColumn, SortBar}

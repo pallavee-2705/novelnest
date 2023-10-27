@@ -1,5 +1,5 @@
 import React,{useState, useEffect, useRef} from 'react';
-import {FilterColumn, BookCard, SortBar} from "../components";
+import {FilterColumn, BookCard, SortBar, BookRow} from "../components";
 // import { banner1, featurebook, newrelease1, newrelease2 } from '../assets';
 import env from "react-dotenv";
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
@@ -51,28 +51,49 @@ import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 
 const Store = () => {
 
+  // total books
   const [Books, setBooks] = useState([])
 
+  // page number
   const [page, setPage] = useState(1)
 
+  // books per page
   const [itemsPerPage, setItemsPerPage] = useState(6);
 
+  // total items + total pages
   const [totalItems, setTotalItems] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
 
+  // grid/row view
+  const [isGrid, setIsGrid] = useState(() => {
+    // Initialize isGrid from localStorage, or use a default value
+    const storedIsGrid = localStorage.getItem('isGrid');
+    return storedIsGrid ? JSON.parse(storedIsGrid) : true;
+  });
+
+  // Update isGrid state and save it in localStorage
+  const toggleIsGrid = () => {
+    const newIsGrid = !isGrid;
+    setIsGrid(newIsGrid);
+    localStorage.setItem('isGrid', JSON.stringify(newIsGrid));
+  };
+
   const pageRef = useRef(null);
 
+  // filter form
   const [filterData, setFilterData] = useState({
-    low_price:"",
-    high_price:"",
+    search: "",
+    author: "",
     languages: [],
-    book_type: "",
+    book_type: "books",
   })
 
+  // update filer form
   const updateFilterData = (newFilterData) => {
     setFilterData({ ...filterData, ...newFilterData });
   };
 
+  // change button function
   const pageButtonPress = (direction) => {
     if(direction === 'left' && page>1)
     {
@@ -83,8 +104,9 @@ const Store = () => {
     }
   }
 
+  // BOOK QUERY parameters
   const apiKey = env.PUBLIC_BOOK_API_KEY;
-  const query = 'fault in our stars'; // Replace with your search query
+  const query = 'The rooster bar'; // Replace with your search query
 
   // Calculate the startIndex based on the current page and itemsPerPage
   const startIndex = (page - 1) * itemsPerPage;
@@ -110,9 +132,9 @@ const Store = () => {
   useEffect(() => {
 
     const newData = async () => {
-      const {low_price, high_price, languages, book_type} = filterData;
+      const {search, author, languages, book_type} = filterData;
       try {
-        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}&startIndex=${startIndex}&maxResults=${itemsPerPage}&langRestrict=${languages}`);
+        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}+${author}&key=${apiKey}&startIndex=${startIndex}&maxResults=${itemsPerPage}&langRestrict=${languages}&=printType${book_type}`);
     
         if (!response.ok) {
           throw new Error(`Network response was not ok`);
@@ -154,9 +176,9 @@ const Store = () => {
         {/* main column */}
         <div className="max-sm:w-full w-3/4 ">
           {/* Second Menu - Sort Bar */}
-          <SortBar page={page} itemsPerPage={itemsPerPage} setItemsPerPage={setItemsPerPage} totalItems={totalItems}/>
-         
-          {/* GRID */}
+          <SortBar page={page} itemsPerPage={itemsPerPage} setItemsPerPage={setItemsPerPage} totalItems={totalItems}isGrid={isGrid} toggleIsGrid={toggleIsGrid}/>
+
+          {isGrid ? (
           <div className='h-auto grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-x-4 max-sm:px-10'>
             {Books.map((book, index) => {
               return (
@@ -164,6 +186,17 @@ const Store = () => {
               )
             })}
           </div>
+
+          ) : (
+            <div className='h-auto flex flex-col gap-5 pl-5 pr-10'>
+              {Books.map((book, index) => {
+              return (
+                <div key={index} className='w-full'><BookRow book={book}/></div>
+              )
+            })}
+            </div>
+          )}
+
           <div className='p-4 flex justify-center items-center gap-2'>
             <button onClick={()=>pageButtonPress('left')} className='border-[1px] border-[#ED553B] bg-white p-2 rounded-full hover:bg-[#ED553B] text-[#ED553B] hover:text-white'>
               <BsArrowLeft/>

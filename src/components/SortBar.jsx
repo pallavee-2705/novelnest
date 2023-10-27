@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { BsFillGridFill } from "react-icons/bs";
+import { BiMenu } from "react-icons/bi";
+
 
 const options = [3, 6, 9, 12];
 
-const SortBar = ({page, itemsPerPage, setItemsPerPage, totalItems}) => {
+const SortBar = ({page, itemsPerPage, setItemsPerPage, totalItems, isGrid, toggleIsGrid}) => {
   const [isDropDown, setIsDropDown] = useState(false);
   const [start, setStart] = useState(1)
   const [end, setEnd] = useState(6)
@@ -32,7 +35,7 @@ const SortBar = ({page, itemsPerPage, setItemsPerPage, totalItems}) => {
         <div className='relative'>
             <button onClick={()=>{setIsDropDown((prev)=>!prev)}} className='flex items-center'>Show : {itemsPerPage} <RiArrowDropDownLine size={30}/> </button>
             {isDropDown && (
-                <div className='absolute right-0 w-[100%] bg-gray-100 rounded-md shadow'>
+                <div className='absolute right-0 w-[100%] bg-gray-100 z-10 rounded-md shadow'>
                     {options.map((num, index) => (
                     <button 
                         onClick={()=>{
@@ -47,7 +50,10 @@ const SortBar = ({page, itemsPerPage, setItemsPerPage, totalItems}) => {
                 </div>
             )}
         </div>
-        <div>view buttons</div>
+        <div className='flex justify-between items-center gap-5  '>
+            <button onClick={toggleIsGrid} ><BsFillGridFill className={`${isGrid && 'text-red-500'} w-5 h-5 transition-all duration-100 ease-in-out hover:scale-110`} /></button>
+            <button onClick={toggleIsGrid} ><BiMenu className={`${!isGrid && 'text-red-500'} w-7 h-7 transition-all duration-100 ease-in-out hover:scale-110 `} /></button>
+        </div>
     </div>
   )
 }

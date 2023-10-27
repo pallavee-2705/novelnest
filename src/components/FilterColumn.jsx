@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineMinus, AiOutlineSearch } from "react-icons/ai";
 
 import { styles } from '../styles';
 
@@ -12,13 +12,14 @@ const languageOptions = [
 
 const FilterColumn = ({updateFilterData}) => {
     const [price, setPrice] = useState(true);
+    const [writer, setWriter] = useState(false);
     const [language, setLanguage] = useState(false);
     const [bookType, setBookType] = useState(false);
     const [isPaperBack, setIsPaperBack] = useState(true);
 
     const [form, setForm] = useState({
-        low_price:"",
-        high_price:"",
+        search: "",
+        author: "",
         languages: [],
         book_type: "",
 
@@ -33,7 +34,7 @@ const FilterColumn = ({updateFilterData}) => {
         } else if (filter === 2) {
             setBookType((prev) => !prev)
         } else if (filter === 3) {
-            console.log("cvbnmcvb")
+            setWriter((prev) => !prev)
         }
     }
 
@@ -59,7 +60,7 @@ const FilterColumn = ({updateFilterData}) => {
 
             // Update the filter data with the updated languages
             updateFilterData({ languages: updatedLanguages });
-        } else if (name === 'low_price' || name === 'high_price') {
+        } else if (name === 'search' || name === 'author') {
             setForm((prevForm) => ({
                 ...prevForm,
                 [name]: value,
@@ -69,15 +70,11 @@ const FilterColumn = ({updateFilterData}) => {
     }
 
     useEffect(() => {
-        setForm((prevForm) => ({
-            ...prevForm,
-            book_type: isPaperBack ? 'Paperback' : 'Soft Copy',
-        }));
-    }, [isPaperBack])
-    
-    const handleFilterButton = () => {
-        console.log(form)
-    }
+        const detail = isPaperBack ? 'books' : 'magazines';
+        console.log(detail)
+        updateFilterData({ book_type: detail });
+      }, [isPaperBack]);
+
     
 
     // console.log(form)
@@ -86,10 +83,12 @@ const FilterColumn = ({updateFilterData}) => {
 
   return (
     <div className="relative">
-        {/* Price - working */}
+        <div className='border-[2px] border-indigo-900 w-full text-indigo-900 flex justify-center py-1 mb-4 font-medium font-semibold tracking-wide cursor-pointer shadow-md '>Filter</div>
+
+        {/* Search - working */}
         <div className='flex flex-col w-full mb-3'>
             <div className={`${styles.filterContainer}`}>
-                <div>Price</div>
+                <div>Search</div>
                 <div className={`${styles.filterIcon}`}>
                     <button 
                         onClick={()=>handlebuttonPressed(0)}
@@ -102,30 +101,51 @@ const FilterColumn = ({updateFilterData}) => {
                         
 
             <div className={`transition-all h-auto duration-500 ease-in-out ${price ? 'relative translate-y-0' : 'absolute w-full top-0 -translate-y-full opacity-0 z-[-10]'}`}>
-                <div className='flex flex-wrap justify-between py-2 my-2'>
-                    <div className='flex gap-2 items-center'>
-                        <p>$</p>
+                <div className='flex gap-2 items-center justify-between py-2 my-2'>
+                    <div className='flex items-center'>
                         <input
                             type="text"
-                            name="low_price"
-                            value={form.low_price}
+                            name="search"
+                            value={form.search}
                             onChange={handleInput}
-                            placeholder='10'
+                            placeholder='The Rooster Bar'
                             className={`${styles.priceContainer}`}
                         />
                     </div>
-                        <p className='text-zinc-500 text-lg font-medium tracking-wide max-lg:hidden'>to</p>
-                    <div className='flex gap-2 items-center'>
-                        <p>$</p>
+                    <div className='flex items-center h-full'><AiOutlineSearch size={20} /></div>
+                </div>
+
+            </div>
+        </div>
+
+        {/* Author - working */}
+        <div className='flex flex-col w-full mb-3'>
+            <div className={`${styles.filterContainer}`}>
+                <div>Author</div>
+                <div className={`${styles.filterIcon}`}>
+                    <button 
+                        onClick={()=>handlebuttonPressed(3)}
+                        className={`transition-all duration-500 ease-in-out ${writer ? "rotate-180":"rotate-0"}`}
+                        >
+                        {!writer ? <AiOutlinePlus className='w-5 h-5 '/> : <AiOutlineMinus className='w-5 h-5 '/>}
+                    </button>
+                </div>
+            </div>
+                        
+
+            <div className={`transition-all h-auto duration-500 ease-in-out ${writer ? 'relative translate-y-0' : 'absolute w-full top-0 -translate-y-full opacity-0 z-[-10]'}`}>
+                <div className='flex gap-2 items-center justify-between py-2 my-2'>
+                    <div className='flex items-center'>
                         <input
                             type="text"
-                            name="high_price"
-                            value={form.high_price}
+                            name="author"
+                            value={form.author}
                             onChange={handleInput}
-                            placeholder='100'
+                            placeholder='author'
                             className={`${styles.priceContainer}`}
                         />
                     </div>
+                    <div className='flex items-center h-full'><AiOutlineSearch size={20} /></div>
                 </div>
 
             </div>
@@ -175,20 +195,12 @@ const FilterColumn = ({updateFilterData}) => {
 
             <div className={`transition-all h-auto duration-500 ease-in-out ${bookType ? 'relative translate-y-0' : 'absolute w-full top-[60%] -translate-y-full opacity-0 z-[-10]'}`}>
                 <div className='h-auto p-1 my-2 flex flex-col items-center gap-y-1'>
-                    <button type='button' onClick={()=>setIsPaperBack(true)} className={`${isPaperBack ? 'bg-indigo-900 text-white' : 'bg-gray-200 text-indigo-900'} ${styles.bookTypeButton}`}>Paperback</button>
-                    <button type='button' onClick={()=>setIsPaperBack(false)} className={`${!isPaperBack ? 'bg-indigo-900 text-white' : 'bg-gray-200 text-indigo-900'} ${styles.bookTypeButton}`}>soft copy</button>
+                    <button type='button' onClick={()=>setIsPaperBack(true)} className={`${isPaperBack ? 'bg-indigo-900 text-white' : 'bg-gray-200 text-indigo-900'} ${styles.bookTypeButton}`}>Book</button>
+                    <button type='button' onClick={()=>setIsPaperBack(false)} className={`${!isPaperBack ? 'bg-indigo-900 text-white' : 'bg-gray-200 text-indigo-900'} ${styles.bookTypeButton}`}>Magazine</button>
                 </div>
             </div>
         </div>
         
-
-        {/* static */}
-        <div className='relative flex justify-between items-center border-b-[2px] border-neutral-200 pb-2 my-3'>
-            <div>Availabilty</div>
-            <div><AiOutlinePlus className='w-5 h-5' /></div>
-        </div>
-
-        <button type="submit" onClick={handleFilterButton} className='bg-indigo-900 w-full text-white flex justify-center py-1 my-2 font-medium font-light tracking-wide transition-hover duration-200 hover:scale-105 hover:bg-indigo-600 hover:shadow-lg'>Filter</button>
     </div>
   )
 }

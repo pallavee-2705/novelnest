@@ -7,7 +7,7 @@ import { faUser, faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-ico
 const icons = [faUser, faShoppingCart, faHeart];
 
 const Navbar = () => {
-  const options = ['Home', 'Categories', 'New Releases', 'Featured', 'Offers', 'articles'];
+  const options = ['Store', 'Categories', 'New Releases', 'Featured', 'Offers', 'articles'];
   const iconStyle = { color: '#393280' };
 
   // State to manage mobile menu visibility
@@ -24,10 +24,12 @@ const Navbar = () => {
         
       {/* Brand Logo */}
       <div className='brand-logo'>
+        <a  href='#Home'>
         <img className="w-16 h-16 rounded-3xl flex flex-col shadow-lg " 
           src={logo} 
           alt="Logo" 
           />
+        </a>
       </div>
 
       {/* Mobile Menu Toggle Button */}
@@ -46,7 +48,9 @@ const Navbar = () => {
       <div className='hidden md:w-auto md:flex flex-wrap justify-center md:justify-between ml-8'>
         {options.map((option, index) => (
           <React.Fragment key={index}>
-            <a href={`#${option}`} className={`${styles.navButtons}`}>
+            {index==0 ? (
+              <div className='flex'>
+                 <a href='/store' className={`${styles.navButtons}`}>
               <p  className="font-['Inter']">
                 {option}
               </p>
@@ -56,6 +60,22 @@ const Navbar = () => {
                 |
               </span>
             )}
+              </div >
+            ) : (
+              <div  className='flex'>
+                 <a href={`#${option}`} className={`${styles.navButtons}`}>
+              <p  className="font-['Inter']">
+                {option}
+              </p>
+            </a>
+            {index < options.length - 1 && (
+              <span className={`${styles.navButtons} mx-5`}>
+                |
+              </span>
+            )}
+              </div>
+            )}
+           
           </React.Fragment>
         ))}
       </div>

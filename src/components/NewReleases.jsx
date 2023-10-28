@@ -37,7 +37,7 @@ const NewReleases = () => {
 
 
 
-    <div className="w-full flex flex-col h-auto bg-rose-50 py-4">
+    <div id="New Releases" className="w-full flex flex-col h-auto bg-rose-50 py-4">
 
       {/* Headers */}
       <div className="text-center text-neutral-500 text-[13px] font-medium font-['Inter'] uppercase tracking-wider">

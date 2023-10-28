@@ -30,7 +30,7 @@ const Categories = () => {
   console.log("view more button- ",viewMore);
 
   return (
-    <div className='p-10 mx-12 mt-12 mb-8 flex flex-col justify-between'>
+    <div id="Categories" className='p-10 mx-12 mt-12 mb-8 flex flex-col justify-between'>
       <div className='flex w-full justify-between'>
         <div>
           <div className='flex items-center gap-2'>

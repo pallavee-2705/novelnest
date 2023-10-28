@@ -58,7 +58,7 @@ const Banner = () => {
   // console.log(buttonPressed, currentIndex);
 
   return (
-    <div className="w-auto h-[500px] px-5 bg-gradient-to-r from-[#FFE5E5] via-[#F5FFFE] to-[#FFFFFF] flex flex-row justify-evenly">
+    <div id="Home" className="w-auto h-[500px] px-5 bg-gradient-to-r from-[#FFE5E5] via-[#F5FFFE] to-[#FFFFFF] flex flex-row justify-evenly">
       <div className='h-full flex flex-col justify-center items-center p-3'>
         <button onClick={()=>handleArrowPress('left')} className='border-[1px] border-[#ED553B] bg-white p-2 rounded-full hover:bg-[#ED553B] text-[#ED553B] hover:text-white'>
           <BsArrowLeft/>

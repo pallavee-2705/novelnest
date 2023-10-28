@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineSearch } from "react-icons/ai";
+import { ImCancelCircle } from "react-icons/im";
 
 import { styles } from '../styles';
 
@@ -10,7 +11,7 @@ const languageOptions = [
     { label: 'Russian', value: 'ru' },
   ];
 
-const FilterColumn = ({updateFilterData}) => {
+const FilterColumn = ({updateFilterData, setIsFilter}) => {
     const [price, setPrice] = useState(true);
     const [writer, setWriter] = useState(false);
     const [language, setLanguage] = useState(false);
@@ -83,7 +84,12 @@ const FilterColumn = ({updateFilterData}) => {
 
   return (
     <div className="relative">
-        <div className='border-[2px] border-indigo-900 w-full text-indigo-900 flex justify-center py-1 mb-4 font-medium font-semibold tracking-wide cursor-pointer shadow-md '>Filter</div>
+        <div className="flex flex-col items-center gap-2 ">
+            <button onClick={()=>setIsFilter(false)} className='hidden max-sm:block mb-2 cursor-pointer hover:scale-105'>
+                <ImCancelCircle className='w-8 h-8' />
+            </button>
+            <div className='border-[2px] border-indigo-900 w-full text-indigo-900 flex justify-center py-1 mb-4 font-medium font-semibold tracking-wide cursor-pointer shadow-md '>Filter</div>
+        </div>
 
         {/* Search - working */}
         <div className='flex flex-col w-full mb-3'>

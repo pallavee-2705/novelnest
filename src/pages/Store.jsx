@@ -71,6 +71,9 @@ const Store = () => {
     return storedIsGrid ? JSON.parse(storedIsGrid) : true;
   });
 
+  // filter active or not
+  const [isFilter, setIsFilter] = useState(false);
+
   // Update isGrid state and save it in localStorage
   const toggleIsGrid = () => {
     const newIsGrid = !isGrid;
@@ -168,15 +171,19 @@ const Store = () => {
         <p className="font-['Inter'] uppercase text-xl font-medium text-indigo-900 tracking-wide leading-loose">Home / Products</p>
       </div>
       {/* Filter Column */}
-      <div className="flex h-auto">
-        <div className="w-1/4 sm:block hidden p-10 font-['Inter'] font-bold text-indigo-900 leading-loose">
-          <FilterColumn updateFilterData={updateFilterData} />
+      <div className="flex h-auto relative">
+        <div className={`${isFilter ? "block" : "hidden"} w-1/4 max-sm:absolute max-sm:top-0 max-sm:w-full max-sm:bg-gray-200 max-sm:z-10 max-sm:backdrop-blur max-sm:bg-opacity-60 p-10 font-['Inter'] font-bold text-indigo-900 leading-loose`}>
+          <FilterColumn updateFilterData={updateFilterData} setIsFilter={setIsFilter}/>
+        </div>
+
+        <div className={`${!isFilter ? "block" : "hidden"} w-1/4 p-10 font-['Inter'] font-bold text-indigo-900 leading-loose block max-sm:hidden`}>
+        <FilterColumn updateFilterData={updateFilterData} setIsFilter={setIsFilter}/>
         </div>
 
         {/* main column */}
         <div className="max-sm:w-full w-3/4 ">
           {/* Second Menu - Sort Bar */}
-          <SortBar page={page} itemsPerPage={itemsPerPage} setItemsPerPage={setItemsPerPage} totalItems={totalItems}isGrid={isGrid} toggleIsGrid={toggleIsGrid}/>
+          <SortBar page={page} itemsPerPage={itemsPerPage} setItemsPerPage={setItemsPerPage} totalItems={totalItems}isGrid={isGrid} toggleIsGrid={toggleIsGrid} setIsFilter={setIsFilter}/>
 
           {isGrid ? (
           <div className='h-auto grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-x-4 max-sm:px-10'>

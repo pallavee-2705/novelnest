@@ -24,7 +24,7 @@ const Articles = () => {
   ];
 
   return (
-    <div className="w-full h-auto bg-slate-50 flex flex-col px-12 py-6 justify-center items-center" >
+    <div id="articles" className="w-full h-auto bg-slate-50 flex flex-col px-12 py-6 justify-center items-center" >
       {/* first heading  */}
       <div className="w-full h-auto text-center text-neutral-500 text-sm font-medium font-['Inter'] uppercase tracking-wider">
         Read our articles

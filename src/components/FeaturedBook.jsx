@@ -64,7 +64,7 @@ const FeaturedBook = () => {
   console.log(book);
 
   return (
-    <div className="w-auto h-auto px-5 bg-gradient-to-r from-red-50 to-slate-50 flex flex-row justify-between">
+    <div id="Featured" className="w-auto h-auto px-5 bg-gradient-to-r from-red-50 to-slate-50 flex flex-row justify-between">
       <div className='h-auto flex flex-col justify-center items-center p-3'>
         <button onClick={()=>handleArrowPress('left')} className='border-[1px] border-[#ED553B] bg-white p-2 rounded-full hover:bg-[#ED553B] text-[#ED553B] hover:text-white'>
           <BsArrowLeft/>

@@ -21,7 +21,7 @@ const BookCard = ({ book }) => {
     <div className="p-4 h-full">
       {book.saleInfo.listPrice?.amount ? (
         <a href={`/books/${book.volumeInfo.title}`}>
-          <div className={`h-2/3 border-[1px] bg-white shadow border border-stone-200 flex items-center justify-center transition-hover duration-500 ease-in-out  ${book.saleInfo.listPrice?.amount && 'hover:scale-110 hover:shadow-2xl'}`}>
+          <div className={`h-2/3 border-[1px] bg-white shadow border-stone-200 flex items-center justify-center transition-hover duration-500 ease-in-out  ${book.saleInfo.listPrice?.amount && 'hover:scale-110 hover:shadow-2xl'}`}>
             {isBookData ? (
               <div className='relative h-2/3 w-2/3'>
                 <img src={book.volumeInfo.imageLinks?.thumbnail} alt={book.volumeInfo.title} className={`bg-red-500 w-full h-full ${!book.saleInfo.listPrice?.amount && 'opacity-30'}`} />
@@ -56,7 +56,7 @@ const BookCard = ({ book }) => {
         </a>
       ) : (
         <div className='h-full'>
-          <div className={`h-2/3 border-[1px] bg-white shadow border border-stone-200 flex items-center justify-center transition-hover duration-500 ease-in-out  ${book.saleInfo.listPrice?.amount && 'hover:scale-110 hover:shadow-2xl'}`}>
+          <div className={`h-2/3 border-[1px] bg-white shadow border-stone-200 flex items-center justify-center transition-hover duration-500 ease-in-out  ${book.saleInfo.listPrice?.amount && 'hover:scale-110 hover:shadow-2xl'}`}>
             {isBookData ? (
               <div className='relative h-2/3 w-2/3'>
                 <img src={book.volumeInfo.imageLinks?.thumbnail} alt={book.volumeInfo.title} className={`bg-red-500 w-full h-full ${!book.saleInfo.listPrice?.amount && 'opacity-30'}`} />

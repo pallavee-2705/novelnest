@@ -20,9 +20,9 @@ const BookDetail = () => {
 
 
   return (
-    <div className=' from-red-50 to-slate-50 bg-gradient-to-r p-14 flex gap-16 '>
+    <div className=' from-red-50 to-slate-50 bg-gradient-to-r px-14 py-24 flex gap-16 mb-16'>
       {/* book cover  */}
-      <div className='ml-16 '>
+      <div className='ml-16 transition-transform duration-300 transform hover:scale-105'>
         <img src={samplebook} 
         alt="" 
         />
@@ -31,7 +31,7 @@ const BookDetail = () => {
       {/* book detail  */}
       <div className='flex flex-col w-1/3  text-indigo-900'>
         {/* book name  */}
-        <div className='text-5xl font-bold '>
+        <div className='text-5xl font-bold'>
           Twillight
         </div>
         {/* book author */}
@@ -61,7 +61,7 @@ const BookDetail = () => {
 
         {bookDescription.split('\n').length > 3 && (
           <button
-            className="text-indigo-600 cursor-pointer"
+            className="text-indigo-600 cursor-pointer hover:underline"
             onClick={toggleDescription}
           >
             {showFullDescription ? 'View Less' : 'View More'}
@@ -71,11 +71,11 @@ const BookDetail = () => {
 
 
         {/* Cart */}
-        <div className="relative w-full flex gap-1 mt-6">
-          <button className="bg-indigo-900 text-white px-6 py-3 rounded-lg w-full">
+        <div className="relative w-full flex gap-2 mt-8">
+          <button className="bg-indigo-900 text-white px-6 py-3 rounded-lg w-full transition-transform duration-300 transform hover:scale-105 ">
             Buy Now
           </button>
-          <button className=" top-0 right-0 bg-indigo-900 text-white rounded-lg py-3 px-6">
+          <button className=" top-0 right-0 bg-indigo-900 text-white rounded-lg py-3 px-6 transition-transform duration-300 transform hover:scale-105">
             <FontAwesomeIcon icon={faShoppingCart} />
           </button>
         </div>

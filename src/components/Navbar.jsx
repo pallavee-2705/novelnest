@@ -24,7 +24,7 @@ const Navbar = () => {
         
       {/* Brand Logo */}
       <div className='brand-logo'>
-        <a  href='#Home'>
+        <a  href='/'>
         <img className="w-16 h-16 rounded-3xl flex flex-col shadow-lg " 
           src={logo} 
           alt="Logo" 
@@ -48,7 +48,7 @@ const Navbar = () => {
       <div className='hidden md:w-auto md:flex flex-wrap justify-center md:justify-between ml-8'>
         {options.map((option, index) => (
           <React.Fragment key={index}>
-            {index==0 ? (
+            {index===0 ? (
               <div className='flex'>
                  <a href='/store' className={`${styles.navButtons}`}>
               <p  className="font-['Inter']">

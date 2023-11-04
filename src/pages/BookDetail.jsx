@@ -1,87 +1,98 @@
-import React, { useState } from 'react';
-import { samplebook } from '../assets'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-
 const BookDetail = () => {
+  const [bookData, setBookData] = useState(null);
   const [showFullDescription, setShowFullDescription] = useState(false);
-   
-  const toggleDescription = () => {
-    setShowFullDescription(!showFullDescription);
-  };
 
-  const bookDescription = `About three things I was absolutely positive.
-  First, Edward was a vampire.
-  Second, there was a part of him - and I didn't know how dominant that part might be - that thirsted for my blood.
-  And third, I was unconditionally and irrevocably in love with him.
-  Deeply seductive and extraordinarily suspenseful, Twilight is a love story with bite.`;
+  useEffect(() => {
+    // Define the search term for the Google Books API
+    const searchTerm = 'xNgstAEACAAJ';
 
+    // Define the API URL with the search term
+    const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`;
 
-
+    // Make the API request
+    axios.get(apiUrl)
+      .then(response => {
+        // Update the bookData state with the API response
+        setBookData(response.data.items[0]); // Assuming you want the first result
+      })
+      
+      .catch(error => {
+        console.error('Error fetching data from the API:', error);
+      });
+  }, []);
+console.log(bookData);
   return (
-    <div className=' from-red-50 to-slate-50 bg-gradient-to-r px-14 py-24 flex gap-16 mb-16'>
-      {/* book cover  */}
-      <div className='ml-16 transition-transform duration-300 transform hover:scale-105'>
-        <img src={samplebook} 
-        alt="" 
-        />
-
-      </div>
-      {/* book detail  */}
-      <div className='flex flex-col w-1/3  text-indigo-900'>
-        {/* book name  */}
-        <div className='text-5xl font-bold'>
-          Twillight
-        </div>
-        {/* book author */}
-        <div className=' text-xl h-3 mt-1 font-light'>
-          Stephenie Meyer
-        </div>
-        {/* rating  */}
-        <div className='text-2xl h-4 font- mt-7'>
-          <p><i>Rating 3.64</i></p>
-        </div>
-        {/* price  */}
-        <div className='text-4xl mt-8 font-semibold'>
-          $12.99
-        </div>
-
-        {/* descritption  */}
-        <div className="mt-8 text-justify ">
-        {showFullDescription ? (
-          <>
-            {bookDescription} {/* Display the full description */}
-          </>
-        ) : (
-          <>
-            {bookDescription.split('\n').slice(0, 3).join('\n')} {/* Show only a few lines */}
-          </>
-        )}
-
-        {bookDescription.split('\n').length > 3 && (
-          <button
-            className="text-indigo-600 cursor-pointer hover:underline"
-            onClick={toggleDescription}
-          >
-            {showFullDescription ? 'View Less' : 'View More'}
-          </button>
-        )}
-      </div>
+    <div >
+      {bookData ? (
+        <div className="from-red-50 to-slate-50 bg-gradient-to-r px-28 flex gap-20 mb-16 mt-8 py-20">
+          {/* Book cover */}
+          <div className="ml-16 transition-transform duration-300 transform hover:scale-105">
+            <img 
+            src={bookData.volumeInfo.imageLinks.thumbnail} 
+            alt={bookData.volumeInfo.title}
+            className='h-full
+            w-[260px]' 
+            />
+          </div>
 
 
-        {/* Cart */}
-        <div className="relative w-full flex gap-2 mt-8">
-          <button className="bg-indigo-900 text-white px-6 py-3 rounded-lg w-full transition-transform duration-300 transform hover:scale-105 ">
-            Buy Now
-          </button>
-          <button className=" top-0 right-0 bg-indigo-900 text-white rounded-lg py-3 px-6 transition-transform duration-300 transform hover:scale-105">
-            <FontAwesomeIcon icon={faShoppingCart} />
-          </button>
+          {/* Book detail */}
+          <div className="flex flex-col w-1/2 text-indigo-900">
+            {/* Book name */}
+            <div className="text-4xl font-bold hover:underline">{bookData.volumeInfo.title}</div>
+            {/* Book author */}
+            <div className="text-lg h-3 mt-1 font-light">{bookData.volumeInfo.authors.join(', ')}</div>
+            {/* Rating */}
+            <div className="text-xl h-4 mt-7">
+              <p>
+                <i>Rating {bookData.volumeInfo.averageRating}</i>
+              </p>
+            </div>
+            {/* Price */}
+
+            {/* <div className="text-4xl mt-8 font-semibold">${bookData.saleInfo.listPrice.amount}</div> */} 
+            
+            <div className="text-3xl mt-8 font-semibold">
+              $13.99
+            </div>
+            {/* Description */}
+            <div className="mt-8 text-justify text-lg">
+              {showFullDescription ? (
+                <>{bookData.volumeInfo.description}</>
+              ) : (
+                <>{bookData.volumeInfo.description.split('\n').slice(0, 3).join('\n')}</>
+              )}
+
+              {bookData.volumeInfo.description.split('\n').length > 3 && (
+                <button
+                  className="text-indigo-600 cursor-pointer hover:underline"
+                  onClick={() => setShowFullDescription(!showFullDescription)}
+                >
+                  {showFullDescription ? 'View Less' : 'View More'}
+                </button>
+              )}
+            </div>
+            {/* Cart */}
+            <div className="relative w-full flex gap-2 mt-8">
+              <button className="bg-indigo-900 text-white px-6 py-3 rounded-lg w-full transition-transform duration-300 transform hover:scale-105">
+                Buy Now
+              </button>
+              <button className="top-0 right-0 bg-indigo-900 text-white rounded-lg py-3 px-6 transition-transform duration-300 transform hover:scale-105">
+                <FontAwesomeIcon icon={faShoppingCart} />
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
-  )
+  );
 }
 
-export default BookDetail
+export default BookDetail;

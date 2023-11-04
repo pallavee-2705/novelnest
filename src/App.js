@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home, BookDetail, Store } from './pages';
-import { BookNavBar, Footer } from './components';
+import { Navbar, Footer } from './components';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function Layout({ children }) {
   // You can add any additional layout components or styling here
   return (
     <div>
-      <BookNavBar />
+      <Navbar />
       {children}
       <Footer />
     </div>

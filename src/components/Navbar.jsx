@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { styles } from '../styles';
 import { logo } from '../assets';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { GoogleLogin, googleLogout } from '@react-oauth/google'; // Import GoogleLogout from @react-oauth/google
+import { jwtDecode } from 'jwt-decode';
 
 const icons = [faUser, faShoppingCart, faHeart];
 
@@ -17,6 +19,43 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const [userGivenName, setUserGivenName] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track if the user is logged in
+
+  const handleGoogleLoginSuccess = (credentialResponse) => {
+    const userData = jwtDecode(credentialResponse.credential);
+
+    // Assuming the given name is in the 'given_name' field of the decoded JWT
+    const givenName = userData.given_name;
+
+    // Store the given name in local storage
+    localStorage.setItem('givenName', givenName);
+
+    // Store the given name in the state
+    setUserGivenName(givenName);
+
+    // Set isLoggedIn to true
+    setIsLoggedIn(true);
+  };
+
+  useEffect(() => {
+    const storedGivenName = localStorage.getItem('givenName');
+    if (storedGivenName) {
+      setUserGivenName(storedGivenName);
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUserGivenName('');
+    localStorage.setItem('givenName', '');
+    googleLogout();
+
+  }
+
+  const isHomePage = window.location.pathname === '/';  
   
   return (
     <div className="mt-10 mx-12 md:p-0 flex flex-col md:flex-row md:items-center mb-6 justify-between">
@@ -45,6 +84,8 @@ const Navbar = () => {
       </div>
 
 
+      {/* middle menu */}
+      {isHomePage && 
       <div className='hidden md:w-auto md:flex flex-wrap justify-center md:justify-between ml-8'>
         {options.map((option, index) => (
           <React.Fragment key={index}>
@@ -79,27 +120,48 @@ const Navbar = () => {
           </React.Fragment>
         ))}
       </div>
+      }
+      
+      {!isLoggedIn ? ( // Show the login button if the user is not logged in
+        <GoogleLogin
+          theme="filled_black"
+          shape="pill"
+          logo_alignment="left"
+          useOneTap
+          onSuccess={handleGoogleLoginSuccess}
+          onError={() => {
+            console.log('Login Failed');
+          }}
+        ></GoogleLogin>
+      ) : (
+        <div className="hidden md:flex md:ml-28 w-full md:w-auto justify-center md:justify-end flex gap-6">
+          {/* user */}
+          <div className='relative group'>
+            <FontAwesomeIcon icon={faUser} size="lg" style={iconStyle} className='hover:scale-110' />
+            <div className={`absolute w-[100px] bg-gradient-to-b from-gray-200 to-slate-300 rounded-xl p-2 font-['Inter'] hidden group-hover:block`}>
+              <p className='w-auto font-semibold tracking-wider mb-3'>Hi, {userGivenName}</p>
+              <button onClick={handleLogout} className='w-full flex justify-center p-1 bg-red-200 rounded-full hover:scale-105 hover:shadow-xl'>Logout</button>
+            </div>
+          </div>   
+          {/* cart */}
+          <div>
+            <FontAwesomeIcon icon={faShoppingCart} size="lg" style={iconStyle} className='hover:scale-110' />            
+          </div>  
+          {/* wishlist */}
+          <div>
+            <FontAwesomeIcon icon={faHeart} size="lg" style={iconStyle} className='hover:scale-110' />
+          </div>       
+        </div>
+      )}
+        
 
-      <div className="hidden md:flex md:ml-28 w-full md:w-auto justify-center md:justify-end">
-        {icons.map((icon, index) => (
-          <React.Fragment key={index}>
-            <span className={`${styles.navButtons}`}>
-              <FontAwesomeIcon icon={icon} size="lg" style={iconStyle} />
-            </span>
-            {index < icons.length - 1 && (
-              <span className="mr-4 ml-4">
-                |
-              </span>
-            )}
-          </React.Fragment>
-        ))}
-      </div>
-
+      
       
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden flex flex-col justify-center items-center">
+          {isHomePage && 
           <div className='flex flex-col ml-auto'>
               {options.map((option, index) => (
                 <span key={index} className="mt-2">
@@ -109,6 +171,7 @@ const Navbar = () => {
                 </span>
               ))}
           </div>
+          }
           <div className='flex gap-8 mt-3 ml-auto '>
           {icons.map((icon, index) => (
             <span key={index} className="mt-2">

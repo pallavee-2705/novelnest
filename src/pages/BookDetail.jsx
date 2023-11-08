@@ -27,7 +27,7 @@ const BookDetail = () => {
   useEffect(() => {
     // Define the search term for the Google Books API
     const searchTerm = id;
-    
+
     // Define the API URL with the search term
     const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`;
 

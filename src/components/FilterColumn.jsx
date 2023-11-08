@@ -77,11 +77,6 @@ const FilterColumn = ({updateFilterData, setIsFilter}) => {
       }, [isPaperBack]);
 
     
-
-    // console.log(form)
-    // console.log("price",price);
-    // console.log("language",language);
-
   return (
     <div className="relative">
         <div className="flex flex-col items-center gap-2 ">
@@ -114,7 +109,7 @@ const FilterColumn = ({updateFilterData, setIsFilter}) => {
                             name="search"
                             value={form.search}
                             onChange={handleInput}
-                            placeholder='The Rooster Bar'
+                            placeholder='Type book name here...'
                             className={`${styles.priceContainer}`}
                         />
                     </div>

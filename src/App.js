@@ -2,18 +2,22 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home, BookDetail, Store } from './pages';
 import { Navbar, Footer } from './components';
-
+import { Toaster } from 'react-hot-toast';
+ 
 function App() {
   return (
-    <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/books/:heading" element={<Layout><BookDetail /></Layout>} />
-          <Route path="/store" element={<Layout><Store /></Layout>} />
-        </Routes>
-      </div>
-    </Router>
+    // <StateContext>
+      <Router>
+        <Layout>
+          <Toaster />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path=":id" element={<BookDetail />} />
+            <Route path="/store" element={<Store />} />
+          </Routes>
+        </Layout>
+      </Router>
+    // </StateContext>
   );
 }
 

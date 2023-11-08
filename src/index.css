@@ -4,6 +4,11 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+::-webkit-scrollbar {
+  width: 0.4rem; /* You can adjust the width to your preference */
+  display: none;
+}
+
 @layer utilities {
   @variants responsive {
     /* Hide scrollbar for Chrome, Safari and Opera */

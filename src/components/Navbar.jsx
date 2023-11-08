@@ -5,12 +5,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { GoogleLogin, googleLogout } from '@react-oauth/google'; // Import GoogleLogout from @react-oauth/google
 import { jwtDecode } from 'jwt-decode';
+import { useStateContext } from '../context/ShareContext';
+import Cart from "./Cart"
 
 const icons = [faUser, faShoppingCart, faHeart];
 
 const Navbar = () => {
   const options = ['Store', 'Categories', 'New Releases', 'Featured', 'Offers', 'articles'];
   const iconStyle = { color: '#393280' };
+
+  const { showCart, setShowCart, totalQuantities, setTotalQuantities } = useStateContext();  
 
   // State to manage mobile menu visibility
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -44,6 +48,13 @@ const Navbar = () => {
     if (storedGivenName) {
       setUserGivenName(storedGivenName);
       setIsLoggedIn(true);
+    }
+
+    const storedQuantity = localStorage.getItem('quantity');
+    if(storedQuantity)
+    {
+      setTotalQuantities(parseInt(storedQuantity));
+      
     }
   }, []);
 
@@ -144,9 +155,10 @@ const Navbar = () => {
             </div>
           </div>   
           {/* cart */}
-          <div>
-            <FontAwesomeIcon icon={faShoppingCart} size="lg" style={iconStyle} className='hover:scale-110' />            
-          </div>  
+          <button onClick={()=>setShowCart(true)} className='flex relative hover:scale-110'>
+            <FontAwesomeIcon icon={faShoppingCart} size="lg" style={iconStyle} className='' />
+            <div className='absolute z-10 bg-red-500 text-white rounded-full -translate-y-2 translate-x-3 px-1 text-[10px]'>{totalQuantities}</div>        
+          </button>  
           {/* wishlist */}
           <div>
             <FontAwesomeIcon icon={faHeart} size="lg" style={iconStyle} className='hover:scale-110' />
@@ -188,6 +200,11 @@ const Navbar = () => {
           </div>
 
         </div>
+      )}
+
+
+      {showCart && (
+        <Cart />
       )}
     </div>
   );

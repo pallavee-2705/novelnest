@@ -12,5 +12,6 @@ import BookCard from "./BookCard";
 import FilterColumn from "./FilterColumn";
 import SortBar from "./SortBar";
 import BookRow from "./BookRow";
+import Cart from "./Cart";
 
-export {Articles, Banner, Categories, Discounts, FeaturedBook, Footer, Navbar, NewReleases, NewsLetter, BookNavBar, BookCard, FilterColumn, SortBar, BookRow}
+export {Articles, Banner, Categories, Discounts, FeaturedBook, Footer, Navbar, NewReleases, NewsLetter, BookNavBar, BookCard, FilterColumn, SortBar, BookRow, Cart}

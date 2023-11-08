@@ -1,31 +1,54 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { useStateContext } from '../context/ShareContext';
 
 const BookDetail = () => {
+  const location = useLocation();
+
+  // Access pathname
+  const pathname = location.pathname;
+  // Split the pathname by '/' and get the last segment
+  const pathSegments = pathname.split('/');
+  const id = pathSegments[pathSegments.length - 1];
+
+
+
+  const { onAdd } = useStateContext();  
+
   const [bookData, setBookData] = useState(null);
   const [showFullDescription, setShowFullDescription] = useState(false);
 
+  
   useEffect(() => {
     // Define the search term for the Google Books API
-    const searchTerm = 'xNgstAEACAAJ';
-
+    const searchTerm = id;
+    
     // Define the API URL with the search term
     const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`;
 
     // Make the API request
     axios.get(apiUrl)
-      .then(response => {
-        // Update the bookData state with the API response
-        setBookData(response.data.items[0]); // Assuming you want the first result
-      })
-      
-      .catch(error => {
-        console.error('Error fetching data from the API:', error);
-      });
+    .then(response => {
+      // Update the bookData state with the API response
+      setBookData(response.data.items[0]); // Assuming you want the first result
+    })
+    
+    .catch(error => {
+      console.error('Error fetching data from the API:', error);
+    });
   }, []);
-console.log(bookData);
+
+  const product = {
+    "id":bookData?.id,
+    "title": bookData?.volumeInfo.title,
+    "image": bookData?.volumeInfo.imageLinks.thumbnail,
+    "price": bookData?.saleInfo.listPrice.amount,
+  }
+
+
   return (
     <div >
       {bookData ? (
@@ -33,7 +56,7 @@ console.log(bookData);
           {/* Book cover */}
           <div className="ml-16 transition-transform duration-300 transform hover:scale-105">
             <img 
-            src={bookData.volumeInfo.imageLinks.thumbnail} 
+            src={bookData?.volumeInfo.imageLinks?.thumbnail} 
             alt={bookData.volumeInfo.title}
             className='h-full
             w-[260px]' 
@@ -55,11 +78,11 @@ console.log(bookData);
             </div>
             {/* Price */}
 
-            {/* <div className="text-4xl mt-8 font-semibold">${bookData.saleInfo.listPrice.amount}</div> */} 
+            <div className="text-4xl mt-8 font-semibold">${bookData.saleInfo.listPrice?.amount}</div> 
             
-            <div className="text-3xl mt-8 font-semibold">
+            {/* <div className="text-3xl mt-8 font-semibold">
               $13.99
-            </div>
+            </div> */}
             {/* Description */}
             <div className="mt-8 text-justify text-lg">
               {showFullDescription ? (
@@ -82,7 +105,7 @@ console.log(bookData);
               <button className="bg-indigo-900 text-white px-6 py-3 rounded-lg w-full transition-transform duration-300 transform hover:scale-105">
                 Buy Now
               </button>
-              <button className="top-0 right-0 bg-indigo-900 text-white rounded-lg py-3 px-6 transition-transform duration-300 transform hover:scale-105">
+              <button onClick={() => onAdd(product)} className="top-0 right-0 bg-indigo-900 text-white rounded-lg py-3 px-6 transition-transform duration-300 transform hover:scale-105">
                 <FontAwesomeIcon icon={faShoppingCart} />
               </button>
             </div>

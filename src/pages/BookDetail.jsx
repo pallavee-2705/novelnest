@@ -9,7 +9,7 @@ const BookDetail = () => {
 
   useEffect(() => {
     // Define the search term for the Google Books API
-    const searchTerm = 'xNgstAEACAAJ';
+    const searchTerm = '5HJzDwAAQBAJ';
 
     // Define the API URL with the search term
     const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`;
@@ -29,25 +29,26 @@ console.log(bookData);
   return (
     <div >
       {bookData ? (
-        <div className="from-red-50 to-slate-50 bg-gradient-to-r px-6 sm:px-12 md:px-24 lg:px-28 flex flex-col sm:flex-row gap-4 sm:gap-8 py-6 sm:py-10 md:py-16 lg:py-20">
+        <div className="from-red-50 to-slate-50 bg-gradient-to-r px-28 flex gap-20 mb-16 mt-8 py-20">
           {/* Book cover */}
-          <div className="mx-auto sm:ml-0 transition-transform duration-300 transform hover:scale-105">
+          <div className="ml-16 transition-transform duration-300 transform hover:scale-105">
             <img 
             src={bookData.volumeInfo.imageLinks.thumbnail} 
             alt={bookData.volumeInfo.title}
-            className="w-60 h-full" 
+            className='h-full
+            w-[260px]' 
             />
           </div>
 
 
           {/* Book detail */}
-          <div className="flex flex-col sm:ml-0 sm:w-1/3 text-indigo-900">
+          <div className="flex flex-col w-1/2 text-indigo-900">
             {/* Book name */}
-            <div className="text-3xl sm:ml-0 sm:text-4xl font-bold hover:underline">{bookData.volumeInfo.title}</div>
+            <div className="text-4xl font-bold hover:underline">{bookData.volumeInfo.title}</div>
             {/* Book author */}
-            <div className="text-md sm:ml-0 sm:text-lg mt-1 font-light">{bookData.volumeInfo.authors.join(', ')}</div>
+            <div className="text-lg h-3 mt-1 font-light">{bookData.volumeInfo.authors.join(', ')}</div>
             {/* Rating */}
-            <div className="text-base sm:ml-0 sm:text-xl mt-4 sm:mt-7">
+            <div className="text-xl h-4 mt-7">
               <p>
                 <i>Rating {bookData.volumeInfo.averageRating}</i>
               </p>
@@ -56,11 +57,11 @@ console.log(bookData);
 
             {/* <div className="text-4xl mt-8 font-semibold">${bookData.saleInfo.listPrice.amount}</div> */} 
             
-            <div className="text-2xl sm:text-3xl mt-4 sm:mt-8 font-semibold">
+            <div className="text-3xl mt-8 font-semibold">
               $13.99
             </div>
             {/* Description */}
-            <div className="mt-4 sm:mt-8 text-justify text-base sm:text-lg">
+            <div className="mt-8 text-justify text-lg">
               {showFullDescription ? (
                 <>{bookData.volumeInfo.description}</>
               ) : (
@@ -77,7 +78,7 @@ console.log(bookData);
               )}
             </div>
             {/* Cart */}
-            <div className="relative flex w-full gap-2 mt-4 sm:mt-8">
+            <div className="relative w-full flex gap-2 mt-8">
               <button className="bg-indigo-900 text-white px-6 py-3 rounded-lg w-full transition-transform duration-300 transform hover:scale-105">
                 Buy Now
               </button>

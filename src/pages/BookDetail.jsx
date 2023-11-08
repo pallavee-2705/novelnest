@@ -4,6 +4,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { useStateContext } from '../context/ShareContext';
+import { useWishListContext } from '../context/WishContext';
 
 const BookDetail = () => {
   const location = useLocation();
@@ -17,6 +18,7 @@ const BookDetail = () => {
 
 
   const { onAdd } = useStateContext();  
+  const { onAddWishList } = useWishListContext();
 
   const [bookData, setBookData] = useState(null);
   const [showFullDescription, setShowFullDescription] = useState(false);
@@ -108,6 +110,11 @@ const BookDetail = () => {
               <button onClick={() => onAdd(product)} className="top-0 right-0 bg-indigo-900 text-white rounded-lg py-3 px-6 transition-transform duration-300 transform hover:scale-105">
                 <FontAwesomeIcon icon={faShoppingCart} />
               </button>
+            </div>
+            
+            {/* wishlist */}
+            <div>
+              <button onClick={()=>onAddWishList(product)}>add to wishlist</button>
             </div>
           </div>
         </div>

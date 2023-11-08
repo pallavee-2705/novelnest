@@ -5,15 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { StateContext } from './context/ShareContext';
+import { WishListContext } from './context/WishContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <GoogleOAuthProvider clientId="244875472353-ra2j18m0rkp8lhu8glt9lhtbcl6b3cpq.apps.googleusercontent.com">
     <StateContext>
+    <WishListContext>
       <React.StrictMode>
           <App />
       </React.StrictMode>
+    </WishListContext>
     </StateContext>
   </GoogleOAuthProvider>
 );

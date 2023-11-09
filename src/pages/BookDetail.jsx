@@ -47,7 +47,7 @@ const BookDetail = () => {
     "id":bookData?.id,
     "title": bookData?.volumeInfo.title,
     "image": bookData?.volumeInfo.imageLinks.thumbnail,
-    "price": bookData?.saleInfo.listPrice.amount,
+    "price": bookData?.saleInfo.listPrice?.amount,
   }
 
 
@@ -69,8 +69,7 @@ const BookDetail = () => {
             <img 
             src={bookData?.volumeInfo.imageLinks?.thumbnail} 
             alt={bookData.volumeInfo.title}
-            className='h-full
-            w-[260px]' 
+            className='w-[250px] lg:[400px] md:[350px]' 
             />
           </div>
           {/* Book detail */}
@@ -80,7 +79,7 @@ const BookDetail = () => {
             <div className="text-4xl font-bold hover:underline">{bookData.volumeInfo.title}</div>
             <div className='mt-3'>
             <AiFillHeart className='text-3xl hover:scale-125 transition-transform'
-            onClick={()=>{}}/>
+            onClick={()=>onAddWishList(product)}/>
             </div>
             </div>
             {/* Book author */}
@@ -128,11 +127,6 @@ const BookDetail = () => {
               </button>
             </div>
           </div>
-            
-            {/* wishlist */}
-            <div>
-              <button onClick={()=>onAddWishList(product)}>add to wishlist</button>
-            </div>
           </div>
         </div>
       ) : (

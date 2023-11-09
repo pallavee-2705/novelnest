@@ -21,18 +21,15 @@ const SortBar = ({page, itemsPerPage, setItemsPerPage, totalItems, isGrid, toggl
     setEnd(endIndex)
   };
 
-  useEffect(() => {      
-      calculateBookRange();
-  }, [])
-
-  useEffect(() => {      
-     calculateBookRange();
-  }, [page, itemsPerPage])  
+  
+  // Calculate the book range when 'page' and 'itemsPerPage' change
+  useEffect(() => {
+    calculateBookRange();
+  }, [page, itemsPerPage, totalItems]); 
 
   return (
-    <div className="relative flex flex-wrap gap-2 justify-between max-md:justify-evenly items-center p-10 font-['Inter']  font-semibold text-indigo-900">
+    <div className="relative flex flex-wrap gap-2 justify-between max-md:justify-evenly items-center p-10 mb-5 font-['Inter']  font-semibold text-indigo-900 border-b-[1px] border-gray-400">
         <button onClick={()=>setIsFilter(true)} className='sm:hidden'><BsFillFilterSquareFill className='w-5 h-5 hover:text-indigo-700' /></button>
-        <div>sort by - alphabetically A-Z</div>
         <div>Showing {start} - {end} of {totalItems} result</div>
         <div className='relative'>
             <button onClick={()=>{setIsDropDown((prev)=>!prev)}} className='flex items-center'>Show : {itemsPerPage} <RiArrowDropDownLine size={30}/> </button>

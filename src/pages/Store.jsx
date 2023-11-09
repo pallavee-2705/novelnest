@@ -130,7 +130,8 @@ const Store = () => {
     .catch(error => {
       console.error('Error:', error);
     });
-  }, [])
+
+  }, [page, itemsPerPage])
 
   useEffect(() => {
 
@@ -161,27 +162,25 @@ const Store = () => {
       pageRef.current.style.transform = `translateX(${translateX}%)`; // Use 'px' units
     }
   }, [page]);
+  
  
   const pageNumbers = [...Array(totalPages).keys()].map((num) => num + 1);
 
   return (
-    <div className="min-h-screen">
-      {/* Heading */}
-      <div className="bg-gradient-to-r from-rose-100 to-teal-100 h-[100px] flex items-center justify-center">
-        <p className="font-['Inter'] uppercase text-xl font-medium text-indigo-900 tracking-wide leading-loose">Home / Products</p>
-      </div>
-      {/* Filter Column */}
-      <div className="flex h-auto relative">
+    <div className="min-h-screen border-[15px] border-rose-300">
+            {/* Filter Column */}
+      <div className="flex h-auto relative ">
         <div className={`${isFilter ? "block" : "hidden"} w-1/4 max-sm:absolute max-sm:top-0 max-sm:w-full max-sm:bg-gray-200 max-sm:z-10 max-sm:backdrop-blur max-sm:bg-opacity-60 p-10 font-['Inter'] font-bold text-indigo-900 leading-loose`}>
           <FilterColumn updateFilterData={updateFilterData} setIsFilter={setIsFilter}/>
+          
         </div>
 
-        <div className={`${!isFilter ? "block" : "hidden"} w-1/4 p-10 font-['Inter'] font-bold text-indigo-900 leading-loose block max-sm:hidden`}>
+        <div className={`${!isFilter ? "block" : "hidden"} w-1/4 p-10 font-['Inter'] font-bold text-indigo-900 leading-loose block max-sm:hidden border-r-[1px] border-gray-400`}>
         <FilterColumn updateFilterData={updateFilterData} setIsFilter={setIsFilter}/>
         </div>
 
         {/* main column */}
-        <div className="max-sm:w-full w-3/4 ">
+        <div className="max-sm:w-full w-3/4">
           {/* Second Menu - Sort Bar */}
           <SortBar page={page} itemsPerPage={itemsPerPage} setItemsPerPage={setItemsPerPage} totalItems={totalItems}isGrid={isGrid} toggleIsGrid={toggleIsGrid} setIsFilter={setIsFilter}/>
 

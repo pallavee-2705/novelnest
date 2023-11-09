@@ -45,8 +45,8 @@ const BookDetail = () => {
 
   const product = {
     "id":bookData?.id,
-    "title": bookData?.volumeInfo.title,
-    "image": bookData?.volumeInfo.imageLinks.thumbnail,
+    "title": bookData?.volumeInfo?.title,
+    "image": bookData?.volumeInfo.imageLinks?.thumbnail,
     "price": bookData?.saleInfo.listPrice?.amount,
   }
 
@@ -76,7 +76,7 @@ const BookDetail = () => {
           <div className="flex flex-col lg:w-1/2 md:w-1/2 text-indigo-900">
             {/* Book name */}
             <div className='flex justify-between'>
-            <div className="text-4xl font-bold hover:underline">{bookData.volumeInfo.title}</div>
+            <div className="text-4xl font-bold hover:underline">{bookData?.volumeInfo?.title}</div>
             <div className='mt-3'>
             <AiFillHeart className='text-3xl hover:scale-125 transition-transform'
             onClick={()=>onAddWishList(product)}/>
@@ -87,12 +87,12 @@ const BookDetail = () => {
             {/* Rating */}
             <div className="text-xl h-4 mt-7">
               <p>
-                <i>Rating {bookData.volumeInfo.averageRating}</i>
+                <i>Rating {bookData?.volumeInfo?.averageRating}</i>
               </p>
             </div>
             {/* Price */}
 
-            <div className="text-4xl mt-8 font-semibold">${bookData.saleInfo.listPrice?.amount}</div> 
+            <div className="text-4xl mt-8 font-semibold">${bookData?.saleInfo.listPrice?.amount}</div> 
             
             {/* <div className="text-3xl mt-8 font-semibold">
               $13.99
@@ -102,7 +102,7 @@ const BookDetail = () => {
       
               {showFullDescription
                 ? bookData.volumeInfo.description
-                : `${bookData.volumeInfo.description.slice(0, 200)}...`}
+                : `${bookData?.volumeInfo.description.slice(0, 200)}...`}
               
             {/* View More/View Less Button */}
             

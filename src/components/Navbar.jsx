@@ -78,7 +78,8 @@ const Navbar = () => {
 
   }
 
-  const isHomePage = window.location.pathname === '/';  
+  const isHomePage = window.location.pathname === '/';
+  const isBookStore = window.location.pathname === '/store';
 
   // Determine the button type based on screen size
   const [buttonType, setButtonType] = useState(false)
@@ -168,6 +169,12 @@ const Navbar = () => {
           </React.Fragment>
         ))}
       </div>
+      }
+
+      {isBookStore &&
+        (
+          <div className="max-md:mt-5 w-full flex justify-center font-['Inter'] uppercase text-2xl font-semibold tracking-widest text-indigo-900">book store</div>
+        )
       }
       
       {!isLoggedIn ? ( // Show the login button if the user is not logged in

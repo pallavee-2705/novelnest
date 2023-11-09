@@ -86,7 +86,7 @@ const Footer = () => {
       </div>
       
       {/* second column  */}
-      <div className='hidden gap-6 sm:flex flex-col h-full max-md:w-full'>
+      <div className='hidden gap-6 sm:flex flex-col h-full max-md:w-full font-light'>
             {/* heading  */}
             <div className='uppercase text-white text-2xl max-lg:text-xl'>
               <p>

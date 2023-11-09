@@ -1,25 +1,54 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart} from '@fortawesome/free-solid-svg-icons';
+import { useStateContext } from '../context/ShareContext';
+import { useWishListContext } from '../context/WishContext';
 import { BiArrowBack } from 'react-icons/bi';
 import {AiFillHeart} from 'react-icons/ai';
 const BookDetail = () => {
+  const location = useLocation();
+
+  // Access pathname
+  const pathname = location.pathname;
+  // Split the pathname by '/' and get the last segment
+  const pathSegments = pathname.split('/');
+  const id = pathSegments[pathSegments.length - 1];
+
+
+
+  const { onAdd } = useStateContext();  
+  const { onAddWishList } = useWishListContext();
+
   const [bookData, setBookData] = useState(null);
   const [showFullDescription, setShowFullDescription] = useState(false);
 
+  
   useEffect(() => {
-    const searchTerm = '5HJzDwAAQBAJ';
+    // Define the search term for the Google Books API
+    const searchTerm = id;
+
+    // Define the API URL with the search term
     const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`;
 
     axios.get(apiUrl)
-      .then(response => {
-        setBookData(response.data.items[0]);
-      })
-      .catch(error => {
-        console.error('Error fetching data from the API:', error);
-      });
+    .then(response => {
+      // Update the bookData state with the API response
+      setBookData(response.data.items[0]); // Assuming you want the first result
+    })
+    
+    .catch(error => {
+      console.error('Error fetching data from the API:', error);
+    });
   }, []);
+
+  const product = {
+    "id":bookData?.id,
+    "title": bookData?.volumeInfo.title,
+    "image": bookData?.volumeInfo.imageLinks.thumbnail,
+    "price": bookData?.saleInfo.listPrice.amount,
+  }
 
 
   return (
@@ -38,9 +67,10 @@ const BookDetail = () => {
           {/* Book cover */}
           <div className="lg:ml-16 md:ml-16 ml-10 mb-3 transition-transform duration-300 transform hover:scale-105">
             <img 
-              src={bookData.volumeInfo.imageLinks.thumbnail} 
-              alt={bookData.volumeInfo.title}
-              className='lg:h-[350px] md:h-[300px] h-[280px]'
+            src={bookData?.volumeInfo.imageLinks?.thumbnail} 
+            alt={bookData.volumeInfo.title}
+            className='h-full
+            w-[260px]' 
             />
           </div>
           {/* Book detail */}
@@ -63,11 +93,11 @@ const BookDetail = () => {
             </div>
             {/* Price */}
 
-            {/* <div className="text-4xl mt-8 font-semibold">${bookData.saleInfo.listPrice.amount}</div> */} 
+            <div className="text-4xl mt-8 font-semibold">${bookData.saleInfo.listPrice?.amount}</div> 
             
-            <div className="text-3xl mt-8 font-semibold">
+            {/* <div className="text-3xl mt-8 font-semibold">
               $13.99
-            </div>
+            </div> */}
             {/* Description */}
              <div className="mt-8 text-justify text-lg">
       
@@ -92,12 +122,17 @@ const BookDetail = () => {
               <button className="bg-indigo-900 text-white rounded-xl w-1/2 cursor-pointer transition-transform duration-300 transform hover:scale-105">
                 Buy Now
               </button>
-              <button className="top-0 right-0 flex items-center justify-center lg:gap-3 gap-2 cursor-pointer bg-indigo-900 text-white rounded-xl w-1/2 transition-transform duration-300 transform hover:scale-105">
+              <button onClick={() => onAdd(product)} className="top-0 right-0 flex items-center justify-center lg:gap-3 gap-2 cursor-pointer bg-indigo-900 text-white rounded-xl w-1/2 transition-transform duration-300 transform hover:scale-105">
                 <p>Add to Cart</p>
                 <FontAwesomeIcon icon={faShoppingCart} />
               </button>
             </div>
           </div>
+            
+            {/* wishlist */}
+            <div>
+              <button onClick={()=>onAddWishList(product)}>add to wishlist</button>
+            </div>
           </div>
         </div>
       ) : (

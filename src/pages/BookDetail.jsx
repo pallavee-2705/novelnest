@@ -18,7 +18,7 @@ const BookDetail = () => {
 
 
 
-  const { onAdd } = useStateContext();  
+  const { onAdd, setShowCart } = useStateContext();  
   const { onAddWishList } = useWishListContext();
 
   const [bookData, setBookData] = useState(null);
@@ -48,6 +48,11 @@ const BookDetail = () => {
     "title": bookData?.volumeInfo.title,
     "image": bookData?.volumeInfo.imageLinks.thumbnail,
     "price": bookData?.saleInfo.listPrice.amount,
+  }
+
+  const handleBuy = (product) => {
+    onAdd(product)
+    setShowCart(true)
   }
 
 
@@ -119,7 +124,10 @@ const BookDetail = () => {
             </div>
             {/* Cart */}
             <div className="relative w-full h-10 flex gap-2 mt-8 lg:text-lg text-sm">
-              <button className="bg-indigo-900 text-white rounded-xl w-1/2 cursor-pointer transition-transform duration-300 transform hover:scale-105">
+              <button 
+                onClick={()=>handleBuy(product)}
+                className="bg-indigo-900 text-white rounded-xl w-1/2 cursor-pointer transition-transform duration-300 transform hover:scale-105"
+              >
                 Buy Now
               </button>
               <button onClick={() => onAdd(product)} className="top-0 right-0 flex items-center justify-center lg:gap-3 gap-2 cursor-pointer bg-indigo-900 text-white rounded-xl w-1/2 transition-transform duration-300 transform hover:scale-105">

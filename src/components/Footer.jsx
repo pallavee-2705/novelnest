@@ -38,11 +38,11 @@ const Footer = () => {
 
 
       {/* outer div  */}
-      <div className='flex flex-col pt-12 w-full h-auto gap-24 px-16 pr-24'>
+      <div className='flex flex-col pt-12 w-full h-auto gap-14 lg:px-16 px-6  lg:pr-32'>
       {/* main div 1  */}
-      <div className='flex w-full max-md:flex-col gap-20 max-lg:gap-10 justify-between'>
+      <div className='flex w-full max-md:flex-col gap-14 max-lg:gap-10 justify-between'>
       {/* first column  */}
-      <div className='flex flex-col gap-12 h-full w-1/3 max-md:w-full'>
+      <div className='flex flex-col gap-6 h-full w-1/3 max-md:w-full'>
             {/* logo  */}
             <div>
               <img src={footerlogo} 
@@ -52,7 +52,7 @@ const Footer = () => {
             {/* subtext */}
             <div className='text-white text-lg font-light'>
               <p>
-              Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              Discover the joy of reading with our vast collection of books. 
               </p>
 
             </div>
@@ -86,7 +86,7 @@ const Footer = () => {
       </div>
       
       {/* second column  */}
-      <div className='gap-6 flex flex-col h-full max-md:w-full'>
+      <div className='hidden gap-6 sm:flex flex-col h-full max-md:w-full'>
             {/* heading  */}
             <div className='uppercase text-white text-2xl max-lg:text-xl'>
               <p>
@@ -114,10 +114,10 @@ const Footer = () => {
       </div>
 
       {/* main div 2  */}
-      <div className='flex max-md:flex-col text-lg font-light text-white justify-between'>
+      <div className='flex max-md:flex-col lg:text-lg text-md font-light text-white justify-between'>
       {/* copyrights  */}
       <div>
-      © 2022 Arihant. All Rights Reserved.
+      © 2023  All Rights Reserved.
       </div>
       {/* privacy  */}
       <div>

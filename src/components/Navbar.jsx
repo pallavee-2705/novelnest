@@ -173,7 +173,7 @@ const Navbar = () => {
 
       {isBookStore &&
         (
-          <div className="max-md:mt-5 w-full flex justify-center font-['Inter'] uppercase text-2xl font-semibold tracking-widest text-indigo-900">book store</div>
+          <div className="max-md:mt-5 w-auto flex justify-center font-['Inter'] uppercase text-2xl font-semibold tracking-widest text-indigo-900">book store</div>
         )
       }
       

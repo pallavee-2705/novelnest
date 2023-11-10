@@ -4,51 +4,6 @@ import {FilterColumn, BookCard, SortBar, BookRow} from "../components";
 import env from "react-dotenv";
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 
-// const Books = [
-//   {
-//     heading: "To Kill a Mockingbird",
-//     desc: "A powerful exploration of racial injustice and moral growth in the American South during the 1930s, as seen through the eyes of a young girl named Scout Finch.",
-//     image: featurebook,
-//     author:'Timbur Wood',
-//     price:"45.00",
-//   },
-//   {
-//     heading: "1984",
-//     desc: "Sed sit amet faucibus libero. Fusce congue vitae arcu sit amet convallis. Vivamus blandit, ipsum non dignissim. Nulla facilisi. Proin vestibulum, ante id mollis.",
-//     image: banner1,
-//     author:'Timbur Wood',
-//     price:"145.00",
-//   },
-//   {
-//     heading: "Pride and Prejudice",
-//     desc: "Vestibulum eu leo sit amet, consectetur adipiscing elit. Sed ut eleifend velit, vel eleifend nisi. Sed porta, est a feugiat euismod, libero ipsum enim.",
-//     image: newrelease1,
-//     author:'Timbur Wood',
-//     price:"299.00",
-//   },
-//   {
-//     heading: "The Great Gatsby",
-//     desc: "Mauris ac est a justo hendrerit feugiat. Nullam malesuada, ligula ac accumsan. Aliquam tincidunt, nulla ac convallis. Fusce suscipit dui et lorem dignissim.",
-//     image: newrelease2,
-//     author:'Timbur Wood',
-//     price:"75.00",
-//   },
-//   {
-//     heading: "Pride and Prejudice",
-//     desc: "Vestibulum eu leo sit amet, consectetur adipiscing elit. Sed ut eleifend velit, vel eleifend nisi. Sed porta, est a feugiat euismod, libero ipsum enim.",
-//     image: newrelease1,
-//     author:'Timbur Wood',
-//     price:"50.00",
-//   },
-//   {
-//     heading: "The Great Gatsby",
-//     desc: "Mauris ac est a justo hendrerit feugiat. Nullam malesuada, ligula ac accumsan. Aliquam tincidunt, nulla ac convallis. Fusce suscipit dui et lorem dignissim.",
-//     image: newrelease2,
-//     author:'Timbur Wood',
-//     price:"95.00",
-//   },
-// ];
-
 const Store = () => {
 
   // total books

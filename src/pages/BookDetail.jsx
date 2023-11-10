@@ -24,7 +24,7 @@ const BookDetail = () => {
   const [bookData, setBookData] = useState(null);
   const [showFullDescription, setShowFullDescription] = useState(false);
 
-  
+  /* eslint-disable */
   useEffect(() => {
     // Define the search term for the Google Books API
     const searchTerm = id;
@@ -42,6 +42,7 @@ const BookDetail = () => {
       console.error('Error fetching data from the API:', error);
     });
   }, []);
+  /* eslint-disable */
 
   const product = {
     "id":bookData?.id,

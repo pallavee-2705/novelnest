@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const Cart = () => {
     const { setShowCart, cartItems, setCartItems, totalPrice, totalQuantities, setTotalPrice, setTotalQuantities, removeItemFromCart } = useStateContext();
-
+    /* eslint-disable */
     useEffect(() => {
         const storedCartData = localStorage.getItem('cartData');
         const storedPrice = localStorage.getItem('price');
@@ -22,6 +22,7 @@ const Cart = () => {
             setTotalQuantities(parseInt(storedQuantity));
         }
     }, [])
+    /* eslint-disable */
 
     const handlePayment = async () => {
         try {

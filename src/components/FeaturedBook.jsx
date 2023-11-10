@@ -1,36 +1,39 @@
 import React, {useState} from 'react';
-import banner1 from "../assets/banner1.png"
-import { featurebook } from '../assets';
+import { featurebook1, featurebook2, featurebook3, featurebook4 } from '../assets';
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
 const featBooks = [
   {
     heading: "To Kill a Mockingbird",
+    bookid: "/PGR2AwAAQBAJ",
     desc: "A powerful exploration of racial injustice and moral growth in the American South during the 1930s, as seen through the eyes of a young girl named Scout Finch.",
-    image: featurebook,
-    author:'Timbur Wood',
-    price:"45.00",
+    image: featurebook1,
+    author:'Harper Lee',
+    price:"11.99",
   },
   {
     heading: "1984",
-    desc: "Sed sit amet faucibus libero. Fusce congue vitae arcu sit amet convallis. Vivamus blandit, ipsum non dignissim. Nulla facilisi. Proin vestibulum, ante id mollis.",
-    image: banner1,
-    author:'Timbur Wood',
-    price:"45.00",
+    bookid: "/PEpoEAAAQBAJ",
+    desc: "Among the seminal texts of the 20th century, Nineteen Eighty-Four is a rare work that grows more haunting as its futuristic purgatory becomes more real. Published in 1949, the book offers political satirist George Orwell's nightmarish vision of a totalitarian, bureaucratic world and one poor stiff's attempt to find individuality.",
+    image: featurebook2,
+    author:'George Orwell',
+    price:"2.99",
   },
   {
     heading: "Pride and Prejudice",
-    desc: "Vestibulum eu leo sit amet, consectetur adipiscing elit. Sed ut eleifend velit, vel eleifend nisi. Sed porta, est a feugiat euismod, libero ipsum enim.",
-    image: banner1,
-    author:'Timbur Wood',
-    price:"45.00",
+    bookid:"/LOFwDwAAQBAJ",
+    desc: "The romantic clash between the opinionated Elizabeth and her proud beau, Mr. Darcy, is a splendid performance of civilized sparring. And Jane Austen's radiant wit sparkles as her characters dance a delicate quadrille of flirtation and intrigue, making this book the most superb comedy of manners of Regency England.",
+    image: featurebook3,
+    author:'Jane Austen',
+    price:"10.99",
   },
   {
     heading: "The Great Gatsby",
-    desc: "Mauris ac est a justo hendrerit feugiat. Nullam malesuada, ligula ac accumsan. Aliquam tincidunt, nulla ac convallis. Fusce suscipit dui et lorem dignissim.",
-    image: banner1,
-    author:'Timbur Wood',
-    price:"45.00",
+    bookid: "/zvvtDwAAQBAJ",
+    desc: "The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island at a time when The New York Times noted: Gin was the national drink and sex the national obsession! It is an exquisitely crafted tale of America in the 1920s.",
+    image: featurebook4,
+    author:'F. Scott Fitzgerald',
+    price:"10.99",
   },
 ];
 
@@ -73,13 +76,13 @@ const FeaturedBook = () => {
 
 
       <div>
-      <div className={`flex ${book%2===0 ? "flex-row" : "flex-row-reverse"}  w-full justify-between transform ${isSkewed ? move : 'translate-x-0'}  transition-transform duration-500 ease-in-out`}>
+      <div className={`flex ${book%2===0 ? "flex-row" : "flex-row-reverse"}  w-full mb-2 justify-between transform ${isSkewed ? move : 'translate-x-0'}  transition-transform duration-500 ease-in-out`}>
         <a href='/featuredbook[i]' className='flex flex-col w-1/2 max-md:w-full items-center justify-center px-10 pt-10 cursor-pointer'>
           <div className=''>
           <h2 className="flex w-full justify-center items-center py-2 font-['Inter'] text-indigo-900 font-semibold text-4xl sm:text-3xl max-md:block hidden mb-5">Feature Book</h2>
           </div>
           <div className='max-sm:h-[200px] flex items-center'>
-          <img src={featBooks[book].image} alt="featurebook" className='object-contain p-1 w-full h-full'/>
+          <img src={featBooks[book].image} alt="featurebook" className='object-contain p-1 w-auto lg:h-[500px] md:h-[500px] h-[240px]'/>
           </div>
         </a>
 
@@ -104,8 +107,8 @@ const FeaturedBook = () => {
           <div class="text-red-500 text-2xl font-bold font-['Inter'] capitalize tracking-wide">$ {featBooks[book].price}</div>
          </div>
 
-          <a href='/featuredbooks' className='mt-10'>
-            <button onClick={()=>{}} className="flex items-center gap-2 border-[1px] border-indigo-900 text-indigo-900 rounded-lg py-3 px-5 hover:scale-105">
+          <a href={featBooks[book].bookid} className='mt-10'>
+          <button onClick={() => {}} className="flex items-center gap-2 border-[1px] border-indigo-900 text-indigo-900 rounded-lg py-3 px-5 hover:scale-105">
               <p className='uppercase tracking-wide font-normal leading-9 flex gap-1 '>Read More</p> <BsArrowRight />
             </button>
           </a>

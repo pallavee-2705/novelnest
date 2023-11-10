@@ -6,7 +6,10 @@ import categories1 from "./categories1.png";
 import categories2 from "./categories2.png"; 
 import categories3 from "./categories3.png"; 
 import discount from "./discount.png"; 
-import featurebook from "./featurebook.png"; 
+import featurebook1 from "./featurebook1.jpg";
+import featurebook2 from "./featurebook2.jpg"; 
+import featurebook3 from "./featurebook3.jpg"; 
+import featurebook4 from "./featurebook4.jpg"; 
 import newrelease1 from "./newrelease1.jpg"; 
 import newrelease2 from "./newrelease2.jpg"; 
 import newrelease3 from "./newrelease3.jpg";
@@ -36,7 +39,10 @@ export {
     categories2,
     categories3,
     discount,
-    featurebook,
+    featurebook1,
+    featurebook2,
+    featurebook3,
+    featurebook4,
     newrelease1,
     newrelease2,
     newrelease3,

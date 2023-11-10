@@ -66,7 +66,7 @@ const NewReleases = () => {
                   href={bookid}
                 >
                 {/* the white rectangle */}
-                <div className='w-full md:col-span-1 lg:col-span-2 h-full p-4 bg-white shadow border items-center border-stone-200'>
+                <div className='w-auto md:col-span-1 lg:col-span-2 h-full items-center p-4 bg-white shadow border border-stone-200'>
                   <img
                   src={imageUrl}
                   alt=""

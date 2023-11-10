@@ -55,7 +55,7 @@ const BookDetail = () => {
     setShowCart(true)
   }
 
-
+console.log(bookData);
   return (
     <div className='from-red-50 to-slate-50 bg-gradient-to-r'>
       {bookData ? (

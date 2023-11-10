@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home, BookDetail, Store } from './pages';
-import { Navbar, Footer } from './components';
+import { Navbar, Footer, Success, Cancel } from './components';
 import { Toaster } from 'react-hot-toast';
  
 function App() {
@@ -14,6 +14,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path=":id" element={<BookDetail />} />
             <Route path="/store" element={<Store />} />
+            <Route path="/payment/success" element={<Success />} />
+            <Route path="/payment/canceled" element={<Cancel />} />
           </Routes>
         </Layout>
       </Router>

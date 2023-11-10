@@ -4,8 +4,8 @@ import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
 const banners = [
   {
-    heading: "To Kill a Mockingbird",
-    desc: "A powerful exploration of racial injustice and moral growth in the American South during the 1930s, as seen through the eyes of a young girl named Scout Finch.",
+    heading: "Fangirl: A Novel",
+    desc: "In Rainbow Rowell's Fangirl, Cath is a Simon Snow fan. Okay, the whole world is a Simon Snow fan, but for Cath, being a fan is her life―and she's really good at it.",
     image: banner1,
   },
   {
@@ -81,8 +81,8 @@ const Banner = () => {
                 
               </div>
   
-              <div className='h-full'>
-       
+              <div className='h-full w-1/2'>
+      
                 <img src={banner.image} alt="banner" className="h-full max-lg:py-10 w-full" title={banner.heading}/>
               </div>
             </div>

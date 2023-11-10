@@ -18,7 +18,7 @@ const BookDetail = () => {
 
 
 
-  const { onAdd } = useStateContext();  
+  const { onAdd, setShowCart } = useStateContext();  
   const { onAddWishList } = useWishListContext();
 
   const [bookData, setBookData] = useState(null);
@@ -50,7 +50,12 @@ const BookDetail = () => {
     "price": bookData?.saleInfo.listPrice?.amount,
   }
 
-console.log(bookData)
+  const handleBuy = (product) => {
+    onAdd(product)
+    setShowCart(true)
+  }
+
+
   return (
     <div className='from-red-50 to-slate-50 bg-gradient-to-r'>
       {bookData ? (
@@ -118,7 +123,10 @@ console.log(bookData)
             </div>
             {/* Cart */}
             <div className="relative w-full h-10 flex gap-2 mt-8 lg:text-lg text-sm">
-              <button className="bg-indigo-900 text-white rounded-xl w-1/2 cursor-pointer transition-transform duration-300 transform hover:scale-105">
+              <button 
+                onClick={()=>handleBuy(product)}
+                className="bg-indigo-900 text-white rounded-xl w-1/2 cursor-pointer transition-transform duration-300 transform hover:scale-105"
+              >
                 Buy Now
               </button>
               <button onClick={() => onAdd(product)} className="top-0 right-0 flex items-center justify-center lg:gap-3 gap-2 cursor-pointer bg-indigo-900 text-white rounded-xl w-1/2 transition-transform duration-300 transform hover:scale-105">

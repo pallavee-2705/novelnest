@@ -19,6 +19,7 @@
 .env.production.local
 .env
 /public/env.js
+backend/node_modules
 
 npm-debug.log*
 yarn-debug.log*

@@ -2,6 +2,7 @@ import React, { useEffect} from 'react';
 import { useStateContext } from '../context/ShareContext';
 import { ImCancelCircle } from "react-icons/im";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import axios from 'axios';
 
 const Cart = () => {
     const { setShowCart, cartItems, setCartItems, totalPrice, totalQuantities, setTotalPrice, setTotalQuantities, removeItemFromCart } = useStateContext();
@@ -21,6 +22,20 @@ const Cart = () => {
             setTotalQuantities(parseInt(storedQuantity));
         }
     }, [])
+
+    const handlePayment = async () => {
+        try {
+          const response = await axios.post('http://localhost:4242/checkout', {
+            cartItems,
+          });
+    
+          // Redirect the user to the Stripe Checkout page
+          window.location.href = response.data.url;
+            
+        } catch (error) {
+          console.error('Error initiating checkout:', error);
+        }
+      };
     
 
 
@@ -74,7 +89,7 @@ const Cart = () => {
                 <div>{totalPrice}</div>
             </div>
             <div className='flex w-full justify-center'>
-                <button className='bg-red-500 w-2/3 my-2 text-2xl rounded-full text-white p-2'>Pay Now</button>
+                <button onClick={(handlePayment)} className='bg-red-500 w-2/3 my-2 text-2xl rounded-full text-white p-2'>Pay Now</button>
             </div>
         </div>
         </div>

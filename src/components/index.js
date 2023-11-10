@@ -14,5 +14,7 @@ import SortBar from "./SortBar";
 import BookRow from "./BookRow";
 import Cart from "./Cart";
 import WishList from "./WishList";
+import Success from "./Success";
+import Cancel from "./Cancel";
 
-export {Articles, Banner, Categories, Discounts, FeaturedBook, Footer, Navbar, NewReleases, NewsLetter, BookNavBar, BookCard, FilterColumn, SortBar, BookRow, Cart, WishList}
+export {Articles, Banner, Categories, Discounts, FeaturedBook, Footer, Navbar, NewReleases, NewsLetter, BookNavBar, BookCard, FilterColumn, SortBar, BookRow, Cart, WishList, Success, Cancel}

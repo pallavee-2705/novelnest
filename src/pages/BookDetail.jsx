@@ -55,11 +55,6 @@ const BookDetail = () => {
     setShowCart(true)
   }
 
-  const handleBuy = (product) => {
-    onAdd(product)
-    setShowCart(true)
-  }
-
 
   return (
     <div className='from-red-50 to-slate-50 bg-gradient-to-r'>

@@ -23,9 +23,12 @@ const SortBar = ({page, itemsPerPage, setItemsPerPage, totalItems, isGrid, toggl
 
   
   // Calculate the book range when 'page' and 'itemsPerPage' change
+  /* eslint-disable */
   useEffect(() => {
     calculateBookRange();
   }, [page, itemsPerPage, totalItems]); 
+  /* eslint-disable */
+
 
   return (
     <div className="relative flex flex-wrap gap-2 justify-between max-md:justify-evenly items-center p-10 mb-5 font-['Inter']  font-semibold text-indigo-900 border-b-[1px] border-gray-400">

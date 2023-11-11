@@ -29,7 +29,7 @@ const WishList = () => {
 
 
     return (
-    <div className="fixed top-0 right-0 z-10 bg-gradient-to-r from-red-200 to-indigo-100 w-1/2 max-sm:w-full h-screen overflow-scroll p-4">
+    <div className="fixed top-0 right-0 z-10 bg-gradient-to-r from-red-200 to-indigo-100 w-1/2 max-md:w-full max-sm:w-full h-screen overflow-scroll p-4">
         <div className='w-full flex flex-col h-full'>
 
         <div className='flex justify-between items-center w-full border-b-[1px] border-black pb-2'>
@@ -49,7 +49,7 @@ const WishList = () => {
                         </div>
                     <div className="w-full">
                         <div className="text-indigo-900 text-lg font-semibold font-['Inter'] leading-tight">{item.title}</div>
-                        <div>{item.price}</div>
+                        <div className="font-['Inter'] text-blue-600 font-medium text-lg tracking-wider">${item.price}</div>
                         <div>
                             <button onClick={()=>addFromWishList(item)} className='bg-red-500 text-white rounded-full w-full px-2 py-1 mt-2 hover:scale-105'>Add to Cart</button>
                         </div>

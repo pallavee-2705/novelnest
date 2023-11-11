@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-import { categories1, categories2, categories3 } from "../assets";
+import { categories1, categories2, categories3, romance, thriller, fiction } from "../assets";
 
 import { styles } from '../styles';
 
@@ -49,45 +49,45 @@ const Categories = () => {
         </div>
       </div>
 
-      <div className={`w-full mt-8 transiton-height delay-100 duration-1000 ${viewMore ? "xs:h-[1250px] max-sm:h-[1600px] h-[500px]" : "max-sm:h-[800px] h-[250px]"} relative`}>
+      <div className={`w-full mt-8 transiton-height delay-100 duration-1000 ${viewMore ? "xs:h-[1250px] max-sm:h-[1600px] h-[600px]" : "max-sm:h-[950px] h-[250px]"} relative`}>
         <div className={`absolute top-0 left-0  flex flex-row max-sm:flex-col justify-around items-center gap-10 transition-all delay-100 duration-1000 ease-in-out ${categories===0 && viewMore && 'opacity-100'} ${categories===1 && viewMore && 'opacity-100'} ${categories===1 && !viewMore && 'opacity-0'}  `}>
           <div >
-            <a href='/categories[i]'>
+            <a href='/store'>
               <img src={categories1} alt="categories1" className={`${styles.categoryPics}`} />
-              <p className={`${styles.categoryHeadings}`}>Higher Education 1</p>
+              <p className={`${styles.categoryHeadings}`}>Mystery</p>
             </a>
           </div>
           <div className=''>  
-            <a href='/categories[i]'>
-              <img src={categories2} alt="categories2" className={`${styles.categoryPics}`} />
-              <p className={`${styles.categoryHeadings}`}>Management Books 1</p>
+            <a href='/store'>
+              <img src={fiction} alt="fiction" className={`${styles.categoryPics}`} />
+              <p className={`${styles.categoryHeadings}`}>Fiction</p>
             </a>
           </div>
           <div className=''>
-            <a href='/categories[i]'>
-              <img src={categories3} alt="categories3" className={`${styles.categoryPics}`} />
-              <p className={`${styles.categoryHeadings}`}>Engineering Books 1</p>
+            <a href='/store'>
+              <img src={categories2} alt="categories2" className={`${styles.categoryPics}`} />
+              <p className={`${styles.categoryHeadings}`}>History</p>
             </a>
           </div>        
         </div>
 
         <div className={`absolute top-0 left-0  flex flex-row max-sm:flex-col  justify-around items-center gap-10 transition-all duration-1000 ease-in-out ${categories===0 && viewMore && 'opacity-100 translate-y-[105%] mb-6'} ${categories===1 && viewMore && 'opacity-100 translate-y-[105%] mb-6'} ${categories===0 && !viewMore && 'opacity-0'}    `} >
           <div >
-            <a href='/categories[i]'>
-              <img src={categories3} alt="categories3" className={`${styles.categoryPics}`}/>
-              <p className={`${styles.categoryHeadings}`}>Engineering Books</p>
+            <a href='/store'>
+              <img src={thriller} alt="thriller" className={`${styles.categoryPics}`}/>
+              <p className={`${styles.categoryHeadings}`}>Thriller</p>
             </a>
           </div>
           <div className=''>
-            <a href='/categories[i]>@####'>
-              <img src={categories2} alt="categories2" className={`${styles.categoryPics}`}/>
-              <p className={`${styles.categoryHeadings}`}>Management Books</p>
+            <a href='/store'>
+              <img src={romance} alt="romance" className={`${styles.categoryPics}`}/>
+              <p className={`${styles.categoryHeadings}`}>Romance</p>
             </a>
           </div>
           <div >
-            <a href='/categories[i]'>
-              <img src={categories1} alt="categories1" className={`${styles.categoryPics}`}/>
-              <p className={`${styles.categoryHeadings}`}>Higher Education</p>
+            <a href='/store'>
+              <img src={categories3} alt="categories3" className={`${styles.categoryPics}`}/>
+              <p className={`${styles.categoryHeadings}`}>Sci-Fi</p>
             </a>
           </div>
         </div>

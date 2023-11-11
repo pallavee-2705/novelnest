@@ -11,8 +11,6 @@ import { useWishListContext } from '../context/WishContext';
 import Cart from "./Cart"
 import WishList from './WishList';
 
-const icons = [faUser, faShoppingCart, faHeart];
-
 const Navbar = () => {
   const options = ['Store', 'Categories', 'New Releases', 'Featured', 'Offers', 'articles'];
   const iconStyle = { color: '#393280' };
@@ -47,7 +45,8 @@ const Navbar = () => {
     // Set isLoggedIn to true
     setIsLoggedIn(true);
   };
-
+  
+  /* eslint-disable */
   useEffect(() => {
     const storedGivenName = localStorage.getItem('givenName');
     if (storedGivenName) {
@@ -69,6 +68,8 @@ const Navbar = () => {
       
     }
   }, []);
+  /* eslint-disable */
+
 
   const handleLogout = () => {
     setIsLoggedIn(false);

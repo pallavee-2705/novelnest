@@ -69,9 +69,8 @@ const Store = () => {
   // Calculate the startIndex based on the current page and itemsPerPage
   const startIndex = (page - 1) * itemsPerPage;
 
-  const filter = 'paid-ebooks';
-
   // Make a GET request to the Google Books API with maxResults parameter
+  /* eslint-disable */
   useEffect(() => {
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}&startIndex=${startIndex}&maxResults=${itemsPerPage}`)
     .then(response => response.json())
@@ -117,6 +116,8 @@ const Store = () => {
       pageRef.current.style.transform = `translateX(${translateX}%)`; // Use 'px' units
     }
   }, [page]);
+  /* eslint-disable */
+
   
  
   const pageNumbers = [...Array(totalPages).keys()].map((num) => num + 1);

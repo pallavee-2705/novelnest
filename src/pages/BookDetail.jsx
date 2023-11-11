@@ -20,11 +20,13 @@ const BookDetail = () => {
 
   const { onAdd, setShowCart } = useStateContext();  
   const { onAddWishList } = useWishListContext();
-
+  
   const [bookData, setBookData] = useState(null);
   const [showFullDescription, setShowFullDescription] = useState(false);
-
   
+  const [canBuy, setCanBuy] = useState(false)
+
+  /* eslint-disable */
   useEffect(() => {
     // Define the search term for the Google Books API
     const searchTerm = id;
@@ -36,12 +38,15 @@ const BookDetail = () => {
     .then(response => {
       // Update the bookData state with the API response
       setBookData(response.data.items[0]); // Assuming you want the first result
+      setCanBuy(!!response.data.items[0]?.saleInfo?.listPrice?.amount);
     })
     
     .catch(error => {
       console.error('Error fetching data from the API:', error);
     });
+
   }, []);
+  /* eslint-disable */
 
   const product = {
     "id":bookData?.id,
@@ -82,13 +87,13 @@ console.log(bookData);
             {/* Book name */}
             <div className='flex justify-between'>
             <div className="text-4xl font-bold hover:underline">{bookData?.volumeInfo?.title}</div>
-            <div className='mt-3'>
+            <div className={`mt-3 ${!canBuy && 'opacity-50 pointer-events-none'}`}>
             <AiFillHeart className='text-3xl hover:scale-125 transition-transform'
             onClick={()=>onAddWishList(product)}/>
             </div>
             </div>
             {/* Book author */}
-            <div className="text-lg h-3 mt-1 font-light">{bookData.volumeInfo.authors.join(', ')}</div>
+            <div className="text-lg h-3 mt-1 font-light mb-1">{bookData.volumeInfo.authors.join(', ')}</div>
             {/* Rating */}
             <div className="text-xl h-4 mt-7">
               <p>
@@ -99,9 +104,7 @@ console.log(bookData);
 
             <div className="text-4xl mt-8 font-semibold">${bookData?.saleInfo.listPrice?.amount}</div> 
             
-            {/* <div className="text-3xl mt-8 font-semibold">
-              $13.99
-            </div> */}
+            
             {/* Description */}
              <div className="mt-8 text-justify text-lg">
       
@@ -122,7 +125,7 @@ console.log(bookData);
             
             </div>
             {/* Cart */}
-            <div className="relative w-full h-10 flex gap-2 mt-8 lg:text-lg text-sm">
+            <div className={`relative w-full h-10 flex gap-2 mt-8 lg:text-lg text-sm ${!canBuy && 'opacity-50 pointer-events-none'}`}>
               <button 
                 onClick={()=>handleBuy(product)}
                 className="bg-indigo-900 text-white rounded-xl w-1/2 cursor-pointer transition-transform duration-300 transform hover:scale-105"
@@ -138,7 +141,15 @@ console.log(bookData);
           </div>
         </div>
       ) : (
-        <div>Loading...</div>
+        <div className='flex mb-16 py-14 lg:px-28 md:px-28 px-12 gap-4'>
+          <div className='w-1/3 animate-pulse h-[400px] bg-gray-300 rounded-md'></div>
+          <div className="w-2/3 flex flex-col gap-4">
+            <div className='animate-pulse w-full h-[20px] bg-gray-300 rounded-md'></div>
+            <div className='animate-pulse w-1/3 h-[10px] bg-gray-300 rounded-md'></div>
+            <div className='animate-pulse w-full h-2/3 bg-gray-300 rounded-md'></div>
+            <div className='animate-pulse w-full h-[20px] bg-gray-300 rounded-md'></div>
+          </div>
+        </div>
       )}
     </div>
   );

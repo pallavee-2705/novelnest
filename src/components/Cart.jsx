@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const Cart = () => {
     const { setShowCart, cartItems, setCartItems, totalPrice, totalQuantities, setTotalPrice, setTotalQuantities, removeItemFromCart } = useStateContext();
-
+    /* eslint-disable */
     useEffect(() => {
         const storedCartData = localStorage.getItem('cartData');
         const storedPrice = localStorage.getItem('price');
@@ -22,6 +22,7 @@ const Cart = () => {
             setTotalQuantities(parseInt(storedQuantity));
         }
     }, [])
+    /* eslint-disable */
 
     const handlePayment = async () => {
         try {
@@ -40,13 +41,13 @@ const Cart = () => {
 
 
     return (
-    <div className="fixed top-0 right-0 z-10 bg-gradient-to-r from-red-200 to-indigo-100 w-1/2 h-screen overflow-scroll p-4">
+    <div className="fixed top-0 right-0 z-10 bg-gradient-to-r from-red-200 to-indigo-100 w-1/2 max-md:w-full h-screen overflow-scroll p-4">
         <div className='w-full flex flex-col h-full'>
 
         <div className='flex justify-between items-center w-full border-b-[1px] border-black pb-2'>
             <div className="flex items-center gap-2">
                 <h1 className="font-['Inter']  uppercase font-xl tracking-widest font-bold">my Cart</h1>
-                <p className=''>( {totalQuantities} )</p>
+                <p className="font-['Inter']  uppercase font-xl  font-medium text-red-500">({totalQuantities})</p>
             </div>
             <button onClick={()=>setShowCart(false)}><ImCancelCircle className='w-6 h-6' /></button>
         </div>
@@ -59,16 +60,16 @@ const Cart = () => {
                         <div className=''>
                             <img src={item.image} alt={item.title} className='w-16 h-20'/>
                         </div>
-                    <div className="w-full">
+                    <div className="w-full font-['Inter']">
                         <div className="text-indigo-900 text-lg font-semibold font-['Inter'] leading-tight">{item.title}</div>
-                        <div className='flex gap-2'>
-                            <div>price - ${item.price}</div>
-                            <div>quantity - {item.quantity}</div>
+                        <div className='flex gap-5 items-center'>
+                            <div className='text-indigo-900 '> ${item.price}</div>
+                            <div className='text-red-500 font-semibold italic'>x{item.quantity}</div>
                         </div>
                     </div>
                     <div className='flex flex-col justify-between items-end'>
                         <button onClick={()=>removeItemFromCart(item.id)}><ImCancelCircle className='w-4 h-4' /></button>
-                        <div>{item.price*item.quantity}</div>
+                        <div className="font-['Inter'] text-indigo-900 font-semibold text-lg ">${item.price*item.quantity}</div>
                     </div>
                 </div>
             ))}
@@ -84,9 +85,9 @@ const Cart = () => {
         </div>
 
         <div className='pt-5 px-10 h-1/4 w-full'>
-            <div className=" flex w-full justify-between text-3xl">
-                <div>Total:</div>
-                <div>{totalPrice}</div>
+            <div className=" flex w-full justify-between text-2xl font-['Inter'] text-indigo-900 font-medium ">
+                <div className='uppercase'>Total:</div>
+                <div>${totalPrice}</div>
             </div>
             <div className='flex w-full justify-center'>
                 <button onClick={(handlePayment)} className='bg-red-500 w-2/3 my-2 text-2xl rounded-full text-white p-2'>Pay Now</button>

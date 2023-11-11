@@ -2,12 +2,12 @@ import article1 from "./article1.png";
 import article2 from "./article2.png"; 
 import article3 from "./article3.png"; 
 import banner1 from "./banner1.png"; 
-import banner2 from "./banner2.png";
-import banner3 from "./banner3.png";
-import banner4 from "./banner4.png";
-import categories1 from "./categories1.png"; 
-import categories2 from "./categories2.png"; 
-import categories3 from "./categories3.png"; 
+import categories1 from "./categories1.jpg"; 
+import categories2 from "./categories2.jpeg"; 
+import categories3 from "./categories3.jpeg"; 
+import romance from "./romance.jpeg";
+import thriller from "./thriller.jpeg";
+import fiction from "./fiction.jpeg"
 import discount from "./discount.png"; 
 import featurebook1 from "./featurebook1.jpg";
 import featurebook2 from "./featurebook2.jpg"; 
@@ -44,6 +44,9 @@ export {
     categories1,
     categories2,
     categories3,
+    fiction,
+    romance,
+    thriller,
     discount,
     featurebook1,
     featurebook2,

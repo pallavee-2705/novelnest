@@ -6,6 +6,7 @@ import { runFireWorks } from '../utils';
 const Success = () => {
     const {  setCartItems, setTotalPrice, setTotalQuantities } = useStateContext();
 
+    /* eslint-disable */
     useEffect(() => {
         localStorage.removeItem('cartData');
         localStorage.removeItem('quantity');
@@ -15,6 +16,8 @@ const Success = () => {
         setTotalQuantities(0)
         runFireWorks()
     }, [])
+    /* eslint-disable */
+
     
   return (
     <div className='w-full max-h-screen flex items-center justify-center p-10'>

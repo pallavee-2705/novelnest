@@ -1,26 +1,13 @@
 import React from 'react'
 import { article1, article2, article3, arrowarticles } from '../assets';
+import { Link } from 'react-router-dom';
+
 
 const Articles = () => {
   const articles = [
-    {
-      id: 1,
-      title: 'Reading Books Aways Makes The Moments Happy',
-      date: '2nd August 2021',
-      imageUrl: article1
-    },
-    {
-      id: 2,
-      title: 'Reading books always makes the moments happy',
-      date: '2nd August 2021',
-      imageUrl: article2
-    },
-    {
-      id: 3,
-      title: 'Reading books always makes the moments happy',
-      date: '2nd August 2021',
-      imageUrl: article3
-    }
+    { id: 1, title: 'The Magic of Early Reading: Nurturing Young Minds', date: '2nd August 2021', imageUrl: article1 },
+    { id: 2, title: 'Women in STEM: Nurturing the Next Generation of Innovators', date: '14th December 2021', imageUrl: article2 },
+    { id: 3, title: 'The Art of Creative Living: Embracing Bohemian Spirit', date: '5th May 2022', imageUrl: article3 },
   ];
 
   return (
@@ -45,12 +32,10 @@ const Articles = () => {
       <div name='main-artcle-div'
       className='grid grid-cols-1 md:grid-cols-2 mt-10 lg:grid-cols-3 gap-8 my-8 px-16 w-full '>
         {articles.map(({id, title, date, imageUrl}) => (
-          <div
+          <Link
           key={id}
           className='flex-col flex hover:transform hover:scale-105 hover:text-cyan-900 hover:underline transition-transform duration-300 ease-in-out cursor-pointer gap-2'
-          onClick={() => {
-          window.open('https://www.goodreads.com/', '_blank');
-          }}
+          to={`/allarticles/${id}`}
           >
             {/* image  */}
             <div className='w-full h-auto'>
@@ -71,25 +56,23 @@ const Articles = () => {
             {/* line  */}
             <div className=" mt-6 w-full h-[1px] bg-stone-300" />
             
-          </div>
+          </Link>
         ))}
         </div>
     {/* read more button  */}
-    <div className="lg:w-[250px] lg:h-[56px] text-sm w-2/3  border border-stone-300 font-normal lg:text-lg text-cyan-900 items-center justify-center cursor-pointer p-2 gap-3 flex"
-      onClick={() => {
-        window.open('https://www.goodreads.com/', '_blank');
-      }}
+    {/* <div>
+      <a href="/allarticles" 
+      className="lg:w-[250px] lg:h-[56px] text-sm w-2/3  border border-stone-300 font-normal lg:text-lg text-cyan-900 items-center justify-center cursor-pointer p-2 gap-3 flex"
     >
-    <p>
     READ ALL ARTICLES        
-    </p>
     <img 
       src={arrowarticles}
       alt='arrow'
       className='h-3 w-auto'
       />
+      </a>
     </div>
- 
+  */}
   </div>
   )
 }

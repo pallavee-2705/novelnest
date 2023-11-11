@@ -38,7 +38,8 @@ const Discounts = () => {
 
           {/* Subtext */}
           <div className="text-indigo-900 text-lg md:text-xl lg:mt-6 font-normal font-['Inter']">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac.
+          Enjoy a fantastic 50% discount on all books! Whether you're into thrillers, romance, or sci-fi, there's something for everyone.
+          Happy browsing!
           </div>
 
           {/* Timer */}
@@ -80,17 +81,13 @@ const Discounts = () => {
           </div>
 
           {/* Offer button */}
-          <div
-            className="flex w-full md:w-auto h-auto gap-2 py-3 justify-center items-center cursor-pointer lg:mt-10"
-            onClick={() => {
-              window.open('https://www.goodreads.com/', '_blank');
-            }}
-          >
+            <a className="flex h-auto gap-2 w-fit items-center cursor-pointer lg:mt-10" href='/store'>
             <p className=" text-red-500 font-bold text-xl md:text-2xl font-inter tracking-tight">
               Explore Now
             </p>
-            <img src={arrow} alt="arrow" className="h-2 w-auto " />
-          </div>
+            <img src={arrow} alt="arrow" className="h-3 " />
+            </a>
+        
         </div>
 
         {/* Right side */}

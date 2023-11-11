@@ -28,7 +28,6 @@ import facebook from "./facebook.jpg";
 import linkedin from "./linkedin.jpg";
 import twitter from "./twitter.jpeg";
 import youtube from "./youtube.png";
-import samplebook from "./samplebook.jpg";
 
 
 
@@ -63,6 +62,5 @@ export {
     facebook,
     linkedin,
     twitter,
-    youtube,
-    samplebook
+    youtube
 }

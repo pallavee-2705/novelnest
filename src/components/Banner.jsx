@@ -4,28 +4,28 @@ import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
 const banners = [
   {
-    heading: "Fangirl: A Novel",
-    bookid: "/Boj-DwAAQBAJ",
-    desc: "In Rainbow Rowell's Fangirl, Cath is a Simon Snow fan. Okay, the whole world is a Simon Snow fan, but for Cath, being a fan is her life―and she's really good at it.",
-    image: banner1,
-  },
-  {
     heading: "The Song of Achilles",
     bookid: "/opC3d3ltQ94C",
     desc: "A tale of gods, kings, immortal fame, and the human heart, The Song of Achilles is a dazzling literary feat that brilliantly reimagines Homer’s enduring masterwork, The Iliad.",
     image: banner2,
   },
   {
-    heading: "Meet Me at the Lake",
-    bookid: "/f1d-EAAAQBAJ",
-    desc: "After, a random connection sends two strangers on a daylong adventure where they make a promise one keeps and the other breaks, with life-changing effects. Fern Brookbanks has wasted far too much of her adult life thinking about Will Baxter.",
-    image: banner3,
+    heading: "Fangirl: A Novel",
+    bookid: "/Boj-DwAAQBAJ",
+    desc: "In Rainbow Rowell's Fangirl, Cath is a Simon Snow fan. Okay, the whole world is a Simon Snow fan, but for Cath, being a fan is her life―and she's really good at it.",
+    image: banner1,
   },
   {
     heading: "The Cliffside Inn",
     bookid: "/BIQEEAAAQBAJ",
     desc: "Spend another month in Five Island Cove and experience an amazing adventure between five best friends, the challenges they face, the secrets threatening to come between them, and their undying support of each other.",
     image: banner4,
+  },
+  {
+    heading: "Meet Me at the Lake",
+    bookid: "/f1d-EAAAQBAJ",
+    desc: "After, a random connection sends two strangers on a daylong adventure where they make a promise one keeps and the other breaks, with life-changing effects. Fern Brookbanks has wasted far too much of her adult life thinking about Will Baxter.",
+    image: banner3,
   },
 ];
 

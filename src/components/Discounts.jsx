@@ -38,7 +38,7 @@ const Discounts = () => {
 
           {/* Subtext */}
           <div className="text-indigo-900 text-lg md:text-xl lg:mt-6 font-normal font-['Inter']">
-          Enjoy a fantastic 50% discount on all books! Whether you're into thrillers, romance, or sci-fi, there's something for everyone.
+          Enjoy a fantastic 50% discount on all books at NovelNest! Whether you're into thrillers, romance, or sci-fi, there's something for everyone.
           Happy browsing!
           </div>
 

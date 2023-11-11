@@ -11,7 +11,7 @@ const NewsLetter = () => {
 
   const handleButtonClick = () => {
     console.log(email)
-    alert("Signed up for the newsletter!")
+    alert("Thank you for subscribing to NovelNest's newsletter!")
   }
 
   return (
@@ -20,9 +20,9 @@ const NewsLetter = () => {
         <img src={ornament} alt="ornament" className='max-sm:h-[150px] -translate-x-4'/>
       </div>
       <div className='bg-red-500 w-full flex flex-col items-center px-20'>
-        <div className="text-white text-4xl max-md:text-2xl font-['Inter'] font-semibold leading-wide tracking-wide pt-14 pb-2 max-md:mb-16">Subscribe to our Newsletter</div>
+        <div className="text-white text-4xl max-md:text-2xl font-['Inter'] font-semibold leading-wide tracking-wide pt-14 pb-2 max-md:mb-16">Subscribe to NovelNest's Newsletter !</div>
         <div className='w-full lg:w-1/2 max-md:w-full max-md:hidden'>
-          <p className="text-center text-white text-sm max-md:text-xs font-light font-['Inter'] leading-8 tracking-tight mb-16">Sed eu feugiat amet, libero ipsum enim pharetra hac dolor sit amet, consectetur. Elit adipiscing enim pharetra hac.</p>
+          <p className="text-center text-white text-sm max-md:text-xs font-light font-['Inter'] leading-8 tracking-tight mb-16">Stay up-to-date with the latest literary news, exclusive offers, and exciting releases from NovelNest. Join our community of book enthusiasts!</p>
         </div>
       </div>
 

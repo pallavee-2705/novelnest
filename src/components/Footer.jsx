@@ -54,8 +54,7 @@ const Footer = () => {
             {/* subtext */}
             <div className='text-white text-lg font-light'>
               <p>
-              Discover the joy of reading with our vast collection of books. 
-              </p>
+              Discover the joy of reading with NovelNest! Join our community and explore a vast collection of books.              </p>
 
             </div>
             {/* socials */}

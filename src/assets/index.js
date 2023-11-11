@@ -6,11 +6,11 @@ import banner2 from "./banner2.png";
 import banner3 from "./banner3.png"; 
 import banner4 from "./banner4.png"; 
 import categories1 from "./categories1.jpg"; 
-import categories2 from "./categories2.jpeg"; 
+import categories2 from "./history.jpg"; 
 import categories3 from "./categories3.jpeg"; 
 import romance from "./romance.jpeg";
-import thriller from "./thriller.jpeg";
-import fiction from "./fiction.jpeg"
+import thriller from "./thriller.jpg";
+import fiction from "./fiction.jpg";
 import discount from "./discount.png"; 
 import featurebook1 from "./featurebook1.jpg";
 import featurebook2 from "./featurebook2.jpg"; 

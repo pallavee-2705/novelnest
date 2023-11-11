@@ -50,7 +50,7 @@ const Categories = () => {
       </div>
 
       <div className={`w-full mt-8 transiton-height delay-100 duration-1000 ${viewMore ? "xs:h-[1250px] max-sm:h-[1600px] h-[600px]" : "max-sm:h-[950px] h-[250px]"} relative`}>
-        <div className={`absolute top-0 left-0  flex flex-row max-sm:flex-col justify-around items-center gap-10 transition-all delay-100 duration-1000 ease-in-out ${categories===0 && viewMore && 'opacity-100'} ${categories===1 && viewMore && 'opacity-100'} ${categories===1 && !viewMore && 'opacity-0'}  `}>
+        <div className={`absolute top-0 left-0 right-0 flex flex-row max-sm:flex-col justify-around items-center gap-10 transition-all delay-100 duration-1000 ease-in-out ${categories===0 && viewMore && 'opacity-100'} ${categories===1 && viewMore && 'opacity-100'} ${categories===1 && !viewMore && 'opacity-0'}  `}>
           <div >
             <a href='/store'>
               <img src={categories1} alt="categories1" className={`${styles.categoryPics}`} />
@@ -71,7 +71,7 @@ const Categories = () => {
           </div>        
         </div>
 
-        <div className={`absolute top-0 left-0  flex flex-row max-sm:flex-col  justify-around items-center gap-10 transition-all duration-1000 ease-in-out ${categories===0 && viewMore && 'opacity-100 translate-y-[105%] mb-6'} ${categories===1 && viewMore && 'opacity-100 translate-y-[105%] mb-6'} ${categories===0 && !viewMore && 'opacity-0'}    `} >
+        <div className={`absolute top-0 left-0 right-0 flex flex-row max-sm:flex-col  justify-around items-center gap-10 transition-all duration-1000 ease-in-out ${categories===0 && viewMore && 'opacity-100 translate-y-[105%]'} ${categories===1 && viewMore && 'opacity-100 translate-y-[105%]'} ${categories===0 && !viewMore && 'opacity-0'}    `} >
           <div >
             <a href='/store'>
               <img src={thriller} alt="thriller" className={`${styles.categoryPics}`}/>
@@ -93,7 +93,7 @@ const Categories = () => {
         </div>
       </div>
 
-      <div className={`font-['Inter'] w-full flex justify-center mt-7  ${viewMore && " pt-4 "}`}>
+      <div className={`font-['Inter'] w-full flex justify-center mt-4  ${viewMore && " pt-4 "}`}>
         <button onClick={()=>handleViewButton()} className="flex items-center gap-2 border-[1px] border-indigo-900 text-indigo-900 rounded-lg py-3 px-5 hover:scale-105">
           <p className='uppercase tracking-wide font-normal leading-9 flex gap-1 '>View {viewMore ? <p>Less</p> : <p>More</p>}</p> <BsArrowRight />
         </button>

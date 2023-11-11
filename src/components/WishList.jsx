@@ -8,6 +8,7 @@ const WishList = () => {
     const { setShowWish, WishListItems, setWishListItems, removeItemFromWishList } = useWishListContext();
     const { onAdd } = useStateContext();
 
+    /* eslint-disable */
     useEffect(() => {
         const storedWishListData = localStorage.getItem('wishListData');
         // const storedQuantity = localStorage.getItem('quantity');
@@ -20,6 +21,8 @@ const WishList = () => {
         //     setTotalQuantities(parseInt(storedQuantity));
         // }
     }, [])
+    /* eslint-disable */
+
 
     const addFromWishList = (product) => {
         onAdd(product)

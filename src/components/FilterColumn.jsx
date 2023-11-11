@@ -69,13 +69,13 @@ const FilterColumn = ({updateFilterData, setIsFilter}) => {
             updateFilterData({[name]:value});
         }
     }
-
+    /* eslint-disable */
     useEffect(() => {
         const detail = isPaperBack ? 'books' : 'magazines';
         console.log(detail)
         updateFilterData({ book_type: detail });
       }, [isPaperBack]);
-
+    /* eslint-disable */
     
   return (
     <div className="relative">

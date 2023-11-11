@@ -1,10 +1,9 @@
 import React from 'react'
-import {Articles, Banner, Categories, Discounts, FeaturedBook, Footer, Navbar, NewReleases, NewsLetter} from "../components"
+import {Articles, Banner, Categories, Discounts, FeaturedBook, NewReleases, NewsLetter} from "../components"
 
 const Home = () => {
   return (
     <div>
-      <Navbar />
       <Banner />
       <Categories />
       <NewReleases />
@@ -12,7 +11,7 @@ const Home = () => {
       <Discounts />
       <NewsLetter />
       <Articles />
-      <Footer />
+      
     </div>
   )
 }

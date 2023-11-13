@@ -26,7 +26,7 @@ const Cart = () => {
 
     const handlePayment = async () => {
         try {
-          const response = await axios.post('http://localhost:4242/checkout', {
+          const response = await axios.post('https://payment3.onrender.com/checkout', {
             cartItems,
           });
     

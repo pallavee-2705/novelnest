@@ -22,7 +22,7 @@ const BookRow = ({book}) => {
   return (
     <>
     {book.saleInfo.listPrice?.amount ? (
-        <a href={`/books/${book.volumeInfo.title}`}>
+        <a href={`${book.id}`}>
             <div className={`border-[1px] bg-white shadow border border-stone-200 rounded-md tansition-hover duration-200 ease-in-out ${!book.saleInfo.listPrice?.amount ? 'opacity-60' : 'hover:scale-105'}`}>
                 <div className="flex justify-between items-center p-5">
                     <div className='flex items-center gap-2 hover:cursor-pointer'>

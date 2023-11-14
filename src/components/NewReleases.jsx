@@ -70,7 +70,7 @@ const NewReleases = () => {
                   <img
                   src={imageUrl}
                   alt=""
-                  className="rounded-md duration-200 hover:scale-105 py-2 px-2 h-full"
+                  className="rounded-md duration-200 hover:scale-105 py-2 px-2 h-[300px]"
                 />
                 </div>
 

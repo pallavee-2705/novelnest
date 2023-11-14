@@ -117,7 +117,7 @@ const FeaturedBook = () => {
       </div>
 
       <div className='flex items-center justify-center'>
-        <div className='flex gap-1 mb-5'>
+        <div className='flex gap-1 mt-3 mb-5'>
             {featBooks.map((featurebook, index)=>(
               <div className={`p-3 ${index===book && "border-[1px] border-red-500 rounded-full"}`}>
                 <div className={`w-3 h-3 rounded-full ${index===book ? "bg-red-500 " : 'bg-stone-300'}`}/>

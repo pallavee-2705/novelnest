@@ -64,7 +64,7 @@ const Store = () => {
 
   // BOOK QUERY parameters
   const apiKey = env.PUBLIC_BOOK_API_KEY;
-  const query = 'Harr'; // Replace with your search query
+  const query = 'j'; // Replace with your search query
 
   // Calculate the startIndex based on the current page and itemsPerPage
   const startIndex = (page - 1) * itemsPerPage;

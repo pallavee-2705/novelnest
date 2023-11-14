@@ -44,13 +44,13 @@ const Footer = () => {
       {/* first column  */}
       <div className='flex flex-col gap-6 h-full w-1/3 max-md:w-full'>
             {/* logo  */}
-            <div className='flex items-center gap-3 max-md:justify-center'>
+            <a href='/' className='flex items-center gap-3 max-md:justify-start'>
               <img src={logo} 
               alt="logo" 
               className='w-20 h-20 shadow-xl'
               />
               <p className="font-['Inter'] text-white text-xl tracking-widest font-medium">NovelNest</p>
-            </div>
+            </a>
             {/* subtext */}
             <div className='text-white text-lg font-light'>
               <p>

@@ -69,23 +69,23 @@ const Banner = () => {
         </button>
       </div>
 
-      <div className='w-3/4 h-full overflow-hidden '>
+      <div className='w-full h-full overflow-hidden'>
         <div ref={bannerRef} className='relative h-full w-[400%] flex justify-between delay-100  transition-all duration-1000 ease-in-out'>
           {banners.map((banner, index) => (
-            <div key={index} className='relative h-full w-1/4 p-10 flex justify-start'>
-            <div className=' flex flex-row w-full justify-between gap-10 '>
-              <div className="w-1/2 flex flex-col justify-center gap-3 font-['Inter'] text-indigo-900 max-sm:hidden block">
-                <div className="text-5xl max-lg:text-3xl font-semibold tracking-wide">{banner.heading}</div>
-                <p className='font-medium text-lg max-lg:text-sm text-opacity-80 tracking-wider'>{banner.desc}</p>
+            <div key={index} className='relative h-full w-1/4 p-10 max-sm:p-1 flex justify-start'>
+            <div className=' flex flex-row w-full justify-between gap-10 max-sm:gap-0 max-sm:flex-col-reverse'>
+              <div className="w-1/2 max-sm:w-full max-sm:h-1/3 flex flex-col justify-center gap-3 font-['Inter'] text-indigo-900 ">
+                <div className="text-5xl max-lg:text-3xl max-sm:text-xl font-semibold tracking-wide">{banner.heading}</div>
+                <p className='font-medium text-lg max-lg:text-sm text-opacity-80 tracking-wider max-sm:hidden block'>{banner.desc}</p>
                 <div className='my-2 '> 
-                  <a href={banner.bookid} className="flex w-1/2 items-center justify-center gap-2 border-[1px] border-indigo-900 rounded-lg py-3 px-5 hover:bg-white">
+                  <a href={banner.bookid} className="flex w-1/2 max-sm:w-full items-center justify-center gap-2 border-[1px] border-indigo-900 rounded-lg py-3 px-5 hover:bg-white">
                     <p className='uppercase tracking-wide font-normal leading-9 max-lg:text-xs'>Read More</p> <BsArrowRight className='max-md:w-5 max-md:h-5'/>
                   </a>
                 </div>
                 
               </div>
   
-              <div className='h-full'>      
+              <div className='h-2/3'>      
                 <img src={banner.image} alt="banner" className="h-full max-lg:py-10 w-full" title={banner.heading}/>
               </div>
             </div>

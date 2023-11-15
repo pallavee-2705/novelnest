@@ -2,12 +2,16 @@
 
 Explore NovelNest live at [https://novelnest-gamma.vercel.app/](https://novelnest-gamma.vercel.app/) and embark on a journey to discover and acquire your next literary adventure.
 
+NovelNest is a sophisticated book e-commerce website built with React, offering a seamless and visually appealing experience for book enthusiasts. The design, meticulously crafted in Figma, lends a touch of class to the user interface, making browsing and shopping for books a delight.
+
 <img width="960" alt="image" src="https://github.com/pallavee-2705/novelnest/assets/67875612/b718e016-5c34-4bdb-878b-a0fcc92f624f">
+
 <img width="959" alt="image" src="https://github.com/pallavee-2705/novelnest/assets/67875612/53c89bc8-cb44-43f3-a81b-0f00c843382d">
+
 <img width="960" alt="image" src="https://github.com/pallavee-2705/novelnest/assets/67875612/77e8ac5b-afe7-477a-84c0-cb5055310ca1">
+
 <img width="960" alt="image" src="https://github.com/pallavee-2705/novelnest/assets/67875612/f0e8fd3d-da7e-4bae-b761-d05cd1204ce2">
 
-NovelNest is a sophisticated book e-commerce website built with React, offering a seamless and visually appealing experience for book enthusiasts. The design, meticulously crafted in Figma, lends a touch of class to the user interface, making browsing and shopping for books a delight.
 
 ## Features
 

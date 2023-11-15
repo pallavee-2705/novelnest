@@ -70,7 +70,7 @@ const Banner = () => {
       </div>
 
       <div className='w-full h-full overflow-hidden'>
-        <div ref={bannerRef} className='relative h-full w-[400%] flex justify-between delay-100  transition-all duration-1000 ease-in-out'>
+        <div ref={bannerRef} className='relative h-full w-[400%] flex justify-between delay-100 lg:px-10 transition-all duration-1000 ease-in-out'>
           {banners.map((banner, index) => (
             <div key={index} className='relative h-full w-1/4 p-10 max-sm:p-1 flex justify-start'>
             <div className=' flex flex-row w-full justify-between gap-10 max-sm:gap-0 max-sm:flex-col-reverse'>
@@ -85,7 +85,7 @@ const Banner = () => {
                 
               </div>
   
-              <div className='h-2/3'>      
+              <div className='max-md:h-2/3 lg:h-full lg:px-10'>      
                 <img src={banner.image} alt="banner" className="h-full max-lg:py-10 w-full" title={banner.heading}/>
               </div>
             </div>

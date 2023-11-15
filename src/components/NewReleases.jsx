@@ -66,11 +66,11 @@ const NewReleases = () => {
                   href={bookid}
                 >
                 {/* the white rectangle */}
-                <div className='w-auto md:col-span-1 lg:col-span-2 h-full items-center p-4 bg-white shadow border border-stone-200'>
+                <div className='w-auto md:col-span-1 lg:col-span-2 h-full items-center justify-center flex p-4 bg-white shadow border border-stone-200'>
                   <img
                   src={imageUrl}
                   alt=""
-                  className="rounded-md duration-200 hover:scale-105 py-2 px-2 h-[300px]"
+                  className="rounded-md duration-200 hover:scale-105 py-2 px-2  max-md:h-[300px] lg:h-[350px]"
                 />
                 </div>
 

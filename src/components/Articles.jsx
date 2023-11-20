@@ -13,7 +13,7 @@ const Articles = () => {
   return (
     <div id="articles" className="w-full h-auto bg-slate-50 flex flex-col px-12 py-6 justify-center items-center" >
       {/* first heading  */}
-      <div className="w-full h-auto text-center text-neutral-500 text-sm font-medium font-['Inter'] uppercase tracking-wider">
+      <div className="w-full h-auto text-center text-neutral-500 lg:text-sm max-md:sm text-xs font-medium font-['Inter'] uppercase tracking-wider">
         Read our articles
       </div>
       {/* main heading  */}
@@ -21,8 +21,8 @@ const Articles = () => {
         <div className='w-1/3 flex items-center justify-center '>
           <div className='bg-neutral-200 w-2/3 h-px'></div>
         </div>
-        <div className='flex w-1/3 items-center justify-center'>
-          <div className="text-center text-cyan-900 text-5xl font-normal font-['Inter'] capitalize">Latest Articles</div>
+        <div className='flex lg:w-1/3 w-full md:w-1/3 items-center justify-center'>
+          <div className="text-center text-cyan-900 lg:text-5xl max-md:4xl text-3xl font-normal font-['Inter'] capitalize">Latest Articles</div>
         </div>
         <div className='w-1/3 flex items-center justify-center '>
           <div className='bg-neutral-200 w-2/3 h-px'></div>
@@ -30,7 +30,7 @@ const Articles = () => {
       </div>
       {/* articles  */}
       <div name='main-artcle-div'
-      className='grid grid-cols-1 md:grid-cols-2 mt-10 lg:grid-cols-3 gap-8 my-8 px-16 w-full '>
+      className='grid grid-cols-1 md:grid-cols-2 mt-10 lg:grid-cols-3 gap-8 my-8 lg:px-16 w-full '>
         {articles.map(({id, title, date, imageUrl}) => (
           <Link
           key={id}

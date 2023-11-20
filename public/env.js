@@ -2,6 +2,8 @@ window.env = {
   "ALLUSERSPROFILE": "C:\\ProgramData",
   "APPDATA": "C:\\Users\\Dell\\AppData\\Roaming",
   "ChocolateyInstall": "C:\\ProgramData\\chocolatey",
+  "ChocolateyLastPathUpdate": "133118802914222679",
+  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_30208_UNSDLAJRSMWEXVIU",
   "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_10380_VAEPSGWUYSJTIRUS",
   "COLOR": "1",
   "COLORTERM": "truecolor",

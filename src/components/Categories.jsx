@@ -49,7 +49,7 @@ const Categories = () => {
         </div>
       </div>
 
-      <div className={`w-full mt-8 transiton-height delay-100 duration-1000 ${viewMore ? "xs:h-[1250px] max-sm:h-[1600px] h-[600px]" : "max-sm:h-[950px] h-[250px]"} relative`}>
+      <div className={`w-full mt-8 transiton-height delay-100 duration-1000 ${viewMore ? "xs:h-[1250px] max-sm:h-[1650px] h-[600px]" : "max-sm:h-[950px] h-[250px]"} relative`}>
         <div className={`absolute top-0 left-0 right-0 flex flex-row max-sm:flex-col justify-around items-center gap-10 transition-all delay-100 duration-1000 ease-in-out ${categories===0 && viewMore && 'opacity-100'} ${categories===1 && viewMore && 'opacity-100'} ${categories===1 && !viewMore && 'opacity-0'}  `}>
           <div >
             <a href='/store'>

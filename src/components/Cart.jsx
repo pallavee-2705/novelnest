@@ -1,8 +1,9 @@
-import React, { useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useStateContext } from '../context/ShareContext';
 import { ImCancelCircle } from "react-icons/im";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import axios from 'axios';
+import { Oval } from  'react-loader-spinner'
 
 const Cart = () => {
     const { setShowCart, cartItems, setCartItems, totalPrice, totalQuantities, setTotalPrice, setTotalQuantities, removeItemFromCart } = useStateContext();
@@ -24,8 +25,11 @@ const Cart = () => {
     }, [])
     /* eslint-disable */
 
+    const [isPayNow, setIsPayNow] = useState(false)
+
     const handlePayment = async () => {
         try {
+          setIsPayNow(true)
           const response = await axios.post('https://payment3.onrender.com/checkout', {
             cartItems,
           });
@@ -36,6 +40,7 @@ const Cart = () => {
         } catch (error) {
           console.error('Error initiating checkout:', error);
         }
+        setIsPayNow(false);
       };
     
 
@@ -90,7 +95,24 @@ const Cart = () => {
                 <div>${totalPrice}</div>
             </div>
             <div className='flex w-full justify-center'>
-                <button onClick={(handlePayment)} className='bg-red-500 w-2/3 my-2 text-2xl rounded-full text-white p-2'>Pay Now</button>
+                <button onClick={(handlePayment)} className='bg-red-500 w-2/3 my-2 text-2xl rounded-full text-white p-2'>
+                    {!isPayNow ? <p>Buy Now</p> : 
+                        <div className='flex flex-col w-full items-center justify-center'>
+                            <Oval
+                                height={30}
+                                width={30}
+                                color="#fff"
+                                wrapperStyle={{}}
+                                wrapperClass=""
+                                visible={true}
+                                ariaLabel='oval-loading'
+                                secondaryColor="#fff"
+                                strokeWidth={2}
+                                strokeWidthSecondary={2}
+                            />
+                            <p className='text-sm'>Please wait, free backend service takes some time to load up.</p>
+                        </div>}
+                </button>
             </div>
         </div>
         </div>
